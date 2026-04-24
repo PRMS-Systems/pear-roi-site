@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto — PEAR-ROI®</title>
+  <meta name="description" content="Habla con un especialista PEAR-ROI. Desarrolladores, propietarios, distribuidores e inversionistas bienvenidos."/>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+
+<nav id="site-nav"></nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" style="min-height:50svh; padding:4rem var(--pad) 3rem;">
+    <p class="hero-eyebrow" data-t="contact.eyebrow">Contacto</p>
+    <h1>
+      <span data-t="contact.h1a">Construyamos</span><br>
+      <em data-t="contact.h1b">algo juntos.</em>
+    </h1>
+    <p class="hero-sub" data-t="contact.sub">
+      Habla con un especialista PEAR-ROI. Ya sea que seas desarrollador inmobiliario, propietario o distribuidor — tenemos una solución para ti.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT CONTENT -->
+  <section class="section">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start;">
+
+        <!-- FORM -->
+        <div class="reveal">
+          <p class="section-label">Formulario</p>
+          <h2 style="font-family:var(--serif); font-size:clamp(1.5rem,3vw,2.2rem); font-weight:400; margin-bottom:2rem; line-height:1.2;">Cuéntanos tu proyecto.</h2>
+
+          <form onsubmit="handleSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label data-t="contact.form.name">Nombre</label>
+                <input type="text" data-t-placeholder="contact.form.name" placeholder="Nombre" required>
+              </div>
+              <div class="form-group">
+                <label data-t="contact.form.email">Correo electrónico</label>
+                <input type="email" placeholder="correo@ejemplo.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label data-t="contact.form.type">Soy...</label>
+              <select>
+                <option value="" disabled selected data-t="contact.form.type">Soy...</option>
+                <option data-t="contact.form.t1">Desarrollador inmobiliario</option>
+                <option data-t="contact.form.t2">Propietario de vivienda</option>
+                <option data-t="contact.form.t3">Distribuidor / Instalador</option>
+                <option data-t="contact.form.t4">Inversionista</option>
+                <option data-t="contact.form.t5">Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label data-t="contact.form.msg">Cuéntanos tu proyecto</label>
+              <textarea data-t-placeholder="contact.form.msg" placeholder="Cuéntanos tu proyecto..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%; border:none; cursor:pointer; font-family:var(--sans); font-size:0.9rem; padding:1rem;" data-t="contact.form.btn">
+              Enviar mensaje
+            </button>
+          </form>
+
+          <div id="form-thanks" style="display:none; text-align:center; padding:3rem; background:var(--off-white); border-radius:var(--radius); margin-top:1rem;">
+            <div style="font-size:2rem; margin-bottom:1rem;">✓</div>
+            <h3 style="font-family:var(--serif); font-size:1.5rem; font-weight:400; margin-bottom:0.5rem;">¡Mensaje enviado!</h3>
+            <p style="font-size:0.9rem; color:var(--gray-600);">Te contactaremos en menos de 24 horas.</p>
+          </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="reveal">
+          <p class="section-label" data-t="contact.info.label">Información</p>
+          <h2 style="font-family:var(--serif); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:400; margin-bottom:1rem; line-height:1.25;" data-t="contact.info.h2">Estamos en Querétaro, México.</h2>
+          <p style="font-size:0.9rem; color:var(--gray-600); line-height:1.75; margin-bottom:2.5rem;" data-t="contact.info.p">
+            Atendemos proyectos en toda la República Mexicana y con desarrolladores internacionales interesados en el sistema PEAR-ROI.
+          </p>
+
+          <!-- Info cards -->
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:var(--off-white); border-radius:var(--radius-sm); padding:1.75rem;">
+              <h3 style="font-size:0.95rem; font-weight:600; margin-bottom:0.5rem;" data-t="contact.dev.h3">Para desarrolladores</h3>
+              <p style="font-size:0.85rem; color:var(--gray-600); line-height:1.7;" data-t="contact.dev.p">Ofrecemos kits de demostración, visitas técnicas y presentaciones para equipos de ventas. El primer kit es un piloto sin riesgo.</p>
+            </div>
+            <div style="background:var(--off-white); border-radius:var(--radius-sm); padding:1.75rem;">
+              <h3 style="font-size:0.95rem; font-weight:600; margin-bottom:0.5rem;" data-t="contact.dist.h3">Distribuidores</h3>
+              <p style="font-size:0.85rem; color:var(--gray-600); line-height:1.7;" data-t="contact.dist.p">Programa de distribución activo. Márgenes competitivos, soporte técnico completo y materiales de venta provistos.</p>
+            </div>
+            <div style="background:var(--black); border-radius:var(--radius-sm); padding:1.75rem;">
+              <h3 style="font-size:0.95rem; font-weight:600; margin-bottom:0.5rem; color:white;">PRMS Studio</h3>
+              <p style="font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:1rem;">¿Buscas diseño arquitectónico bajo el framework PRMS? Visita el estudio.</p>
+              <a href="https://prms.systems" target="_blank" class="prms-badge" style="border-color:rgba(255,255,255,0.2); color:rgba(255,255,255,0.6);">prms.systems →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div style="max-width:var(--max); margin:0 auto;">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.jpg" alt="PEAR-ROI" style="height:32px;border-radius:4px;">
+        <p style="margin-top:1rem;" data-t="footer.tagline">Sistema operativo para el hogar del futuro.</p>
+      </div>
+      <div class="footer-col"><h4 data-t="footer.products">Productos</h4><ul>
+        <li><a href="product.html" data-t="kit.h2oe.name">Kit H2O Essential</a></li>
+        <li><a href="product.html" data-t="kit.energy.name">Kit Energy Pro</a></li>
+        <li><a href="product.html" data-t="kit.habitat.name">Kit Habitat Intelligence</a></li>
+      </ul></div>
+      <div class="footer-col"><h4 data-t="footer.company">Empresa</h4><ul>
+        <li><a href="app.html" data-t="nav.app">App</a></li>
+        <li><a href="technology.html" data-t="nav.technology">Tecnología</a></li>
+        <li><a href="https://prms.systems" target="_blank">PRMS Studio</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>PRMS</h4><ul>
+        <li><a href="https://prms.systems" target="_blank">prms.systems</a></li>
+        <li><a href="https://prms.systems/framework" target="_blank">Framework</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p data-t="footer.copy">© 2025 PEAR-ROI · Renewable Pear. Todos los derechos reservados.</p>
+      <a href="https://prms.systems" target="_blank" data-t="footer.prms">Powered by PRMS Framework</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/nav.js"></script>
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  document.querySelector('form').style.display = 'none';
+  document.getElementById('form-thanks').style.display = 'block';
+}
+</script>
+</body>
+</html>

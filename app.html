@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>App & Ecosistema — PEAR-ROI®</title>
+  <meta name="description" content="La app PEAR-ROI centraliza todos tus kits en una interfaz clara. Control total desde cualquier lugar."/>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+
+<nav id="site-nav"></nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow" data-t="app.eyebrow">App & Ecosistema</p>
+    <h1>
+      <span data-t="app.h1a">Un hogar que</span><br>
+      <em data-t="app.h1b">te habla.</em>
+    </h1>
+    <p class="hero-sub" data-t="app.sub">
+      La app PEAR-ROI centraliza todos tus kits en una interfaz clara. Alertas en tiempo real, métricas de eficiencia y control total desde cualquier lugar.
+    </p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-primary" data-t="nav.cta">Comenzar</a>
+      <a href="product.html" class="btn-ghost" data-t="prod.all">Ver kits</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURE 1: DASHBOARD -->
+  <section class="section">
+    <div class="container">
+      <div class="feature-row reveal">
+        <div class="feature-content">
+          <p class="section-label" data-t="app.f1.label">Dashboard</p>
+          <h2 data-t="app.f1.h2">Todo en una sola pantalla.</h2>
+          <p data-t="app.f1.p">El dashboard de PEAR-ROI muestra el estado de todos tus sistemas en tiempo real. Energía generada, consumo actual, calidad del agua, temperatura, seguridad — un vistazo, contexto completo.</p>
+          <div class="pill-list">
+            <span class="pill">Tiempo real</span>
+            <span class="pill">Multi-kit</span>
+            <span class="pill">Historial</span>
+            <span class="pill">Exportación</span>
+          </div>
+        </div>
+        <div class="feature-visual" style="padding:2.5rem; background:var(--off-white); flex-direction:column;">
+          <div class="app-screen" style="width:100%;">
+            <div class="app-bar">
+              <div class="app-bar-left">
+                <h4>PEAR-ROI Home</h4>
+                <span>Milenio III · En línea</span>
+              </div>
+              <div class="app-metric">0.78</div>
+            </div>
+            <div class="app-grid">
+              <div class="app-tile">
+                <div class="app-tile-label">Solar</div>
+                <div class="app-tile-val green">5.2 kW</div>
+              </div>
+              <div class="app-tile">
+                <div class="app-tile-label">Consumo</div>
+                <div class="app-tile-val blue">2.1 kW</div>
+              </div>
+              <div class="app-tile">
+                <div class="app-tile-label">Tanque</div>
+                <div class="app-tile-val">85%</div>
+              </div>
+              <div class="app-tile">
+                <div class="app-tile-label">Temp</div>
+                <div class="app-tile-val">22°C</div>
+              </div>
+            </div>
+            <div class="app-status">
+              <span>Todos los sistemas activos</span>
+              <div class="status-dot"></div>
+            </div>
+            <!-- Extra tiles -->
+            <div class="app-grid" style="margin-top:10px;">
+              <div class="app-tile">
+                <div class="app-tile-label">pH Agua</div>
+                <div class="app-tile-val green">7.2</div>
+              </div>
+              <div class="app-tile">
+                <div class="app-tile-label">Hum</div>
+                <div class="app-tile-val">45%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURE 2: ALERTS -->
+  <section class="section" style="background:var(--off-white);">
+    <div class="container">
+      <div class="feature-row reverse reveal">
+        <div class="feature-content">
+          <p class="section-label" data-t="app.f2.label">Alertas</p>
+          <h2 data-t="app.f2.h2">Antes de que algo falle.</h2>
+          <p data-t="app.f2.p">El sistema detecta anomalías en patrones de consumo y te notifica antes de que se conviertan en problemas. Mantenimiento predictivo que reduce costos de garantía post-venta hasta en un 40%.</p>
+          <div class="pill-list">
+            <span class="pill">Push notifications</span>
+            <span class="pill">Email alerts</span>
+            <span class="pill">Predictivo</span>
+          </div>
+        </div>
+        <div class="feature-visual" style="background:var(--black); padding:2.5rem; flex-direction:column; gap:12px;">
+          <!-- Alert mockup -->
+          <div style="background:rgba(255,255,255,0.05); border-radius:14px; padding:1.25rem; border:1px solid rgba(255,255,255,0.08);">
+            <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#fbbf24;flex-shrink:0;"></div>
+              <span style="font-size:0.78rem; font-weight:600; color:white;">Consumo elevado detectado</span>
+            </div>
+            <p style="font-size:0.75rem; color:rgba(255,255,255,0.45); margin:0;">Kit Energy Pro · hace 2 min</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:14px; padding:1.25rem; border:1px solid rgba(255,255,255,0.08);">
+            <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0;"></div>
+              <span style="font-size:0.78rem; font-weight:600; color:white;">Tanque al 85% — óptimo</span>
+            </div>
+            <p style="font-size:0.75rem; color:rgba(255,255,255,0.45); margin:0;">Kit H2O Essential · Tiempo real</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border-radius:14px; padding:1.25rem; border:1px solid rgba(255,255,255,0.08);">
+            <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#4a9eff;flex-shrink:0;"></div>
+              <span style="font-size:0.78rem; font-weight:600; color:white;">Acceso autorizado — Depto 3</span>
+            </div>
+            <p style="font-size:0.75rem; color:rgba(255,255,255,0.45); margin:0;">Kit Habitat Intelligence · hace 8 min</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURE 3: AUTOMATION -->
+  <section class="section">
+    <div class="container">
+      <div class="feature-row reveal">
+        <div class="feature-content">
+          <p class="section-label" data-t="app.f3.label">Automatización</p>
+          <h2 data-t="app.f3.h2">Tu hogar aprende.</h2>
+          <p data-t="app.f3.p">Define rutinas, umbrales y respuestas automáticas. Si la temperatura sube, el AC se ajusta. Si hay fuga, la válvula se cierra. Si llega un huésped, la chapa se abre. Sin intervención manual.</p>
+          <div class="pill-list">
+            <span class="pill">IF / THEN rules</span>
+            <span class="pill">Rutinas por hora</span>
+            <span class="pill">Control remoto</span>
+            <span class="pill">Check-in automático</span>
+          </div>
+        </div>
+        <div class="feature-visual" style="background:var(--off-white); padding:2.5rem; flex-direction:column; gap:10px;">
+          <!-- Automation rules mockup -->
+          <div style="font-family:var(--mono); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gray-400); margin-bottom:0.5rem;">Automatizaciones activas</div>
+          <div style="background:var(--white); border-radius:12px; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:0.82rem; font-weight:500; margin-bottom:0.2rem;">Si Temp > 26°C</div>
+              <div style="font-size:0.72rem; color:var(--gray-400);">→ Activar AC en Smart Mode</div>
+            </div>
+            <div style="width:36px;height:20px;background:var(--accent);border-radius:100px;"></div>
+          </div>
+          <div style="background:var(--white); border-radius:12px; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:0.82rem; font-weight:500; margin-bottom:0.2rem;">Si fuga detectada</div>
+              <div style="font-size:0.72rem; color:var(--gray-400);">→ Cerrar electroválvula + alertar</div>
+            </div>
+            <div style="width:36px;height:20px;background:var(--accent);border-radius:100px;"></div>
+          </div>
+          <div style="background:var(--white); border-radius:12px; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:0.82rem; font-weight:500; margin-bottom:0.2rem;">Huésped confirmado</div>
+              <div style="font-size:0.72rem; color:var(--gray-400);">→ Abrir chapa + encender luces</div>
+            </div>
+            <div style="width:36px;height:20px;background:var(--accent);border-radius:100px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BENTO: app capabilities -->
+  <section class="section" style="background:var(--off-white);">
+    <div class="container">
+      <p class="section-label center">Capacidades</p>
+      <h2 class="display center" style="margin-bottom:3rem;">Una plataforma.<br><em>Todos los kits.</em></h2>
+      <div class="bento bento-3 reveal">
+        <div class="bento-card">
+          <div class="bento-icon">📊</div>
+          <h3>Métricas en tiempo real</h3>
+          <p>Datos de todos tus sensores actualizados cada 15 segundos. Sin retrasos, sin estimaciones.</p>
+        </div>
+        <div class="bento-card dark">
+          <div class="bento-icon">🔔</div>
+          <h3>Alertas predictivas</h3>
+          <p>El sistema aprende los patrones normales de tu hogar y te avisa cuando algo se desvía antes de que falle.</p>
+        </div>
+        <div class="bento-card">
+          <div class="bento-icon">📱</div>
+          <h3>Control remoto</h3>
+          <p>Abre la chapa, cierra la válvula, ajusta el clima — desde cualquier lugar del mundo con conexión a internet.</p>
+        </div>
+        <div class="bento-card blue large">
+          <h3 style="max-width:22ch;">"Hacemos que sus edificios piensen, para que sus inversionistas ganen."</h3>
+          <p style="margin-top:1rem;">— Oscar García, CEO & Lead Designer, PEAR-ROI</p>
+        </div>
+        <div class="bento-card">
+          <div class="bento-icon">📈</div>
+          <h3>Reportes automáticos</h3>
+          <p>Reportes técnicos mensuales de eficiencia, consumo y estado del sistema — listos para compartir con propietarios o aseguradoras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-section reveal">
+        <h2 data-t="home.cta.h2">El futuro de tu hogar comienza hoy.</h2>
+        <p data-t="home.cta.p">Habla con un especialista PEAR-ROI. Sin compromisos. Con respuestas reales.</p>
+        <a href="contact.html" class="btn-primary" data-t="home.cta.btn">Contactar ahora</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div style="max-width:var(--max); margin:0 auto;">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo.jpg" alt="PEAR-ROI" style="height:32px;border-radius:4px;">
+        <p style="margin-top:1rem;" data-t="footer.tagline">Sistema operativo para el hogar del futuro.</p>
+      </div>
+      <div class="footer-col"><h4 data-t="footer.products">Productos</h4><ul>
+        <li><a href="product.html" data-t="kit.h2oe.name">Kit H2O Essential</a></li>
+        <li><a href="product.html" data-t="kit.energy.name">Kit Energy Pro</a></li>
+        <li><a href="product.html" data-t="kit.habitat.name">Kit Habitat Intelligence</a></li>
+      </ul></div>
+      <div class="footer-col"><h4 data-t="footer.company">Empresa</h4><ul>
+        <li><a href="technology.html" data-t="nav.technology">Tecnología</a></li>
+        <li><a href="https://prms.systems" target="_blank">PRMS Studio</a></li>
+        <li><a href="contact.html" data-t="nav.contact">Contacto</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>PRMS</h4><ul>
+        <li><a href="https://prms.systems" target="_blank">prms.systems</a></li>
+        <li><a href="https://prms.systems/framework" target="_blank">Framework</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p data-t="footer.copy">© 2025 PEAR-ROI · Renewable Pear. Todos los derechos reservados.</p>
+      <a href="https://prms.systems" target="_blank" data-t="footer.prms">Powered by PRMS Framework</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/nav.js"></script>
+</body>
+</html>
