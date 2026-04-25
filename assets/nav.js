@@ -207,7 +207,7 @@
     ];
     el.innerHTML = `
       <div class="nav-logo">
-        <img src="logo.png" alt="PEAR-ROI" onerror="this.style.display='none'">
+        <img src="favicon.png" alt="PEAR-ROI" onerror="this.style.display='none'">
         <span class="nav-logo-text">PEAR-ROI</span>
       </div>
       <ul class="nav-links">
