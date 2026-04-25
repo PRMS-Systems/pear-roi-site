@@ -5,6 +5,7 @@
   // ── TRANSLATIONS ────────────────────────────────────────────────────────────
   const T = {
     // NAV
+    'nav.home':       { es: 'Inicio',        en: 'Home' },
     'nav.product':    { es: 'Producto',      en: 'Product' },
     'nav.app':        { es: 'App',           en: 'App' },
     'nav.technology': { es: 'Tecnología',    en: 'Technology' },
@@ -194,8 +195,11 @@
   function buildNav() {
     const el = document.getElementById('site-nav');
     if (!el) return;
-    const page = window.location.pathname.split('/').pop() || 'index.html';
+    const path = window.location.pathname;
+    const page = path === '/' ? 'index.html' : path.split('/').pop();
+    
     const links = [
+      { href: 'index.html', key: 'nav.home' },
       { href: 'product.html', key: 'nav.product' },
       { href: 'app.html',     key: 'nav.app' },
       { href: 'technology.html', key: 'nav.technology' },
