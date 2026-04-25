@@ -216,7 +216,7 @@
     return `
       <li>
         <a href="${l.href}" class="${page===l.href?'active':''}">
-          <img src="assets/favicon.png" style="height:18px; width:auto;">
+          <img src="favicon.png" style="height:18px; width:auto;">
         </a>
       </li>
     `;
