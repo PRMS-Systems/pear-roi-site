@@ -199,7 +199,7 @@
     const page = path === '/' ? 'index.html' : path.split('/').pop();
     
     const links = [
-      { href: 'index.html', key: 'nav.home' },
+      { href: 'index.html', key: 'nav.home', logo: true },
       { href: 'product.html', key: 'nav.product' },
       { href: 'app.html',     key: 'nav.app' },
       { href: 'technology.html', key: 'nav.technology' },
@@ -211,7 +211,24 @@
         <span class="nav-logo-text">PEAR-ROI</span>
       </div>
       <ul class="nav-links">
-        ${links.map(l => `<li><a href="${l.href}" class="${page===l.href?'active':''}" data-t="${l.key}">${T[l.key]['es']}</a></li>`).join('')}
+        ${links.map(l => {
+  if (l.logo) {
+    return `
+      <li>
+        <a href="${l.href}" class="${page===l.href?'active':''}">
+          <img src="assets/favicon.png" style="height:18px; width:auto;">
+        </a>
+      </li>
+    `;
+  }
+  return `
+    <li>
+      <a href="${l.href}" class="${page===l.href?'active':''}" data-t="${l.key}">
+        ${T[l.key]['es']}
+      </a>
+    </li>
+  `;
+}).join('')}
       </ul>
       <div class="nav-right">
         <div class="lang-switcher">
