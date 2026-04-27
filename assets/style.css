@@ -278,3 +278,26 @@ footer { background: var(--black); color: var(--white); padding: clamp(3rem, 6vw
   justify-content: space-between;
   gap: 3rem;
 }
+
+/* SYSTEM CYCLE SECTION */
+
+.system-cycle {
+  margin-top: 140px;
+  padding: 80px 0px;
+  border-top: 1px solid #ddd;
+  background: transparent;
+}
+.cycle-grid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 0.75rem;
+}
+.ecosystem-logos {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.ecosystem-logos img {
+  height: 40px;
+}
