@@ -255,3 +255,26 @@ footer { background: var(--black); color: var(--white); padding: clamp(3rem, 6vw
 .step-num { font-family: var(--serif); font-size: 2.5rem; color: var(--gray-200); font-weight: 400; line-height: 1; }
 .step-content h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
 .step-content p { font-size: 0.9rem; color: var(--gray-600); line-height: 1.7; }
+
+/* === STAT STRIP FIX === */
+.stat-num {
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+  opacity: 0.9;
+}
+.stat-item {
+  text-align: center;
+  padding: 0 1.5rem;
+}
+.stat-meta {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  margin-top: 0.25rem;
+}
+.stat-strip .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
