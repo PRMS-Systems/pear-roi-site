@@ -218,25 +218,16 @@ el.innerHTML = `
     <button class="nav-toggle" id="navToggle">☰</button>
 
     <ul class="nav-links" id="navLinks">
-      ${links.map(l => {
-        if (l.logo) {
-          return `
-            <li>
-              <a href="${l.href}" class="${page===l.href?'active':''}">
-                <img src="favicon.png" style="height:18px;">
-              </a>
-            </li>
-          `;
-        }
-        return `
-          <li>
-            <a href="${l.href}" class="${page===l.href?'active':''}" data-t="${l.key}">
-              ${T[l.key]['es']}
-            </a>
-          </li>
-        `;
-      }).join('')}
-    </ul>
+      
+${links.map(l => `
+  <li>
+    <a href="${l.href}" class="${page===l.href?'active':''}" data-t="${l.key}">
+      ${T[l.key]['es']}
+    </a>
+  </li>
+`).join('')}
+        </ul>
+        
 
     <div class="nav-right">
       <div class="lang-switcher">
