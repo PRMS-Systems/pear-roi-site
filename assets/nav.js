@@ -205,44 +205,64 @@
       { href: 'technology.html', key: 'nav.technology' },
       { href: 'contact.html', key: 'nav.contact' },
     ];
-    el.innerHTML = `
-      <div class="nav-logo">
-        <img src="favicon.png" alt="PEAR-ROI" onerror="this.style.display='none'">
-        <span class="nav-logo-text">PEAR-ROI</span>
+
+el.innerHTML = `
+  <div class="nav-container">
+
+    <div class="nav-logo">
+      <img src="favicon.png" alt="PEAR-ROI" onerror="this.style.display='none'">
+      <span class="nav-logo-text">PEAR-ROI</span>
+    </div>
+
+    <!-- BOTÓN MOBILE -->
+    <button class="nav-toggle" id="navToggle">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+      ${links.map(l => {
+        if (l.logo) {
+          return `
+            <li>
+              <a href="${l.href}" class="${page===l.href?'active':''}">
+                <img src="favicon.png" style="height:18px;">
+              </a>
+            </li>
+          `;
+        }
+        return `
+          <li>
+            <a href="${l.href}" class="${page===l.href?'active':''}" data-t="${l.key}">
+              ${T[l.key]['es']}
+            </a>
+          </li>
+        `;
+      }).join('')}
+    </ul>
+
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="es">ES</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
       </div>
-      <ul class="nav-links">
-        ${links.map(l => {
-  if (l.logo) {
-    return `
-      <li>
-        <a href="${l.href}" class="${page===l.href?'active':''}">
-          <img src="favicon.png" style="height:18px; width:auto;">
-        </a>
-      </li>
-    `;
-  }
-  return `
-    <li>
-      <a href="${l.href}" class="${page===l.href?'active':''}" data-t="${l.key}">
-        ${T[l.key]['es']}
-      </a>
-    </li>
-  `;
-}).join('')}
-      </ul>
-      <div class="nav-right">
-        <div class="lang-switcher">
-          <button class="lang-btn" data-lang="es">ES</button>
-          <span class="lang-sep">|</span>
-          <button class="lang-btn" data-lang="en">EN</button>
-        </div>
-        <a href="contact.html" class="nav-cta" data-t="nav.cta">${T['nav.cta']['es']}</a>
-      </div>
-    `;
+      <a href="contact.html" class="nav-cta" data-t="nav.cta">${T['nav.cta']['es']}</a>
+    </div>
+
+  </div>
+`;
+
     el.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => { setLang(btn.dataset.lang); applyLang(btn.dataset.lang); });
     });
   }
+  
+  // MOBILE MENU (esto es adicional, no reemplazo)
+const toggle = document.getElementById('navToggle');
+const linksMenu = document.getElementById('navLinks');
+if (toggle && linksMenu) {
+  toggle.addEventListener('click', () => {
+    linksMenu.classList.toggle('active');
+  });
+}
 
   // ── SCROLL REVEAL ─────────────────────────────────────────────────────────
   function initReveal() {
