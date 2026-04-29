@@ -207,18 +207,19 @@
     ];
 
 el.innerHTML = `
+
   <div class="nav-container">
 
     <div class="nav-logo">
       <img src="favicon.png" alt="PEAR-ROI" onerror="this.style.display='none'">
       <span class="nav-logo-text">PEAR-ROI</span>
     </div>
+ 
 
     <!-- BOTÓN MOBILE -->
     <button class="nav-toggle" id="navToggle">☰</button>
 
-    <ul class="nav-links" id="navLinks">
-      
+    <ul class="nav-links" id="navLinks">      
 ${links.map(l => `
   <li>
     <a href="${l.href}" class="${page===l.href?'active':''}" data-t="${l.key}">
@@ -246,7 +247,7 @@ ${links.map(l => `
     });
   }
   
-  // MOBILE MENU (esto es adicional, no reemplazo)
+//  AGREGA ESTO AQUÍ
 const toggle = document.getElementById('navToggle');
 const linksMenu = document.getElementById('navLinks');
 if (toggle && linksMenu) {
