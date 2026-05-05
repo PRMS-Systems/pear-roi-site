@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios — PEAR-ROI Studio</title>
+  <meta name="description" content="Escalera de valor en arquitectura de alto desempeño. Diagnóstico, optimización, certificación y monitoreo continuo para activos inmobiliarios." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #0f0f0d;
+      --ink-soft:   #3a3a35;
+      --ink-muted:  #8a8a7e;
+      --cream:      #f7f4ef;
+      --cream-dark: #ede9e1;
+      --cream-mid:  #f2efe9;
+      --gold:       #b8913a;
+      --gold-pale:  #e8d9b5;
+      --gold-light: #f5edda;
+      --white:      #fdfcf9;
+      --rule:       rgba(15,15,13,0.1);
+      --f-display:  'Cormorant Garamond', Georgia, serif;
+      --f-body:     'DM Sans', sans-serif;
+      --f-mono:     'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--f-body);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 3rem;
+      background: rgba(253,252,249,0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-brand { display: flex; flex-direction: column; gap: 1px; text-decoration: none; }
+    .nav-brand-main { font-family: var(--f-display); font-size: 1.15rem; font-weight: 400; letter-spacing: 0.08em; color: var(--ink); text-transform: uppercase; }
+    .nav-brand-sub { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; color: var(--ink-soft); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-back { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: var(--ink-muted); border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s; padding-bottom: 1px; }
+    .nav-back:hover { color: var(--ink); border-color: var(--ink); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 11rem 3rem 5rem;
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 5rem;
+      align-items: end;
+    }
+    .header-label { font-family: var(--f-mono); font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .header-title { font-family: var(--f-display); font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 300; line-height: 1.05; color: var(--ink); }
+    .header-title em { font-style: italic; color: var(--gold); }
+    .header-right { padding-bottom: 0.5rem; }
+    .header-principle {
+      font-family: var(--f-display);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--gold);
+    }
+    .header-principle em { color: var(--gold); font-style: italic; }
+    .header-desc { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.9; max-width: 52ch; }
+
+    /* ── ESCALERA VISUAL ── */
+    .escalera-section {
+      padding: 5rem 3rem;
+      background: var(--white);
+    }
+    .escalera-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .escalera-title { font-family: var(--f-display); font-size: 1.8rem; font-weight: 300; color: var(--ink); }
+    .escalera-note { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); }
+
+    .escalera-track {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .escalera-track::before {
+      content: '';
+      position: absolute;
+      left: 2rem;
+      top: 2rem;
+      bottom: 2rem;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold-pale), var(--gold), var(--gold-pale));
+    }
+
+    .escalon {
+      display: grid;
+      grid-template-columns: 5rem 1fr auto;
+      gap: 2.5rem;
+      align-items: start;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--rule);
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-left: -1rem;
+      padding-left: 1rem;
+      border-radius: 2px;
+    }
+    .escalon:last-child { border-bottom: none; }
+    .escalon:hover { background: var(--cream-mid); }
+    .escalon.active { background: var(--gold-light); }
+
+    .escalon-num {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding-top: 0.2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .num-circle {
+      width: 4rem; height: 4rem;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1.5px solid var(--gold-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--f-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--gold);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .escalon:hover .num-circle, .escalon.active .num-circle {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--white);
+    }
+    .num-type {
+      font-family: var(--f-mono);
+      font-size: 0.52rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .escalon-content { padding-top: 0.4rem; }
+    .escalon-name { font-family: var(--f-display); font-size: 1.4rem; font-weight: 400; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.2; }
+    .escalon-tagline { font-family: var(--f-mono); font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .escalon-desc { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.85; max-width: 60ch; margin-bottom: 1rem; }
+    .escalon-includes {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .tag {
+      font-family: var(--f-mono); font-size: 0.6rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.3rem 0.7rem;
+      background: var(--cream); color: var(--ink-muted);
+      border: 1px solid var(--rule);
+    }
+    .tag-gold { background: var(--gold-light); color: var(--gold); border-color: var(--gold-pale); }
+
+    .escalon-price {
+      text-align: right;
+      padding-top: 0.4rem;
+      white-space: nowrap;
+    }
+    .price-range {
+      font-family: var(--f-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .price-unit {
+      font-family: var(--f-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 1rem;
+    }
+    .price-cta {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: transparent;
+      border: 1px solid var(--rule);
+      color: var(--ink-soft);
+      font-family: var(--f-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .price-cta:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+
+    /* ── PRINCIPLE NOTE ── */
+    .principle-note {
+      padding: 3rem;
+      background: var(--ink);
+      color: var(--white);
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+    .principle-icon {
+      font-family: var(--f-display);
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(184,145,58,0.3);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .principle-body {}
+    .principle-label { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .principle-text { font-family: var(--f-display); font-size: 1.6rem; font-weight: 300; color: var(--white); line-height: 1.4; }
+    .principle-text em { color: var(--gold); font-style: italic; }
+
+    /* ── DETAILED SERVICES ── */
+    .detail-section {
+      padding: 6rem 3rem;
+    }
+    .detail-section:nth-child(even) { background: var(--cream); }
+    .detail-section:nth-child(odd) { background: var(--white); }
+
+    .detail-inner {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .detail-left {}
+    .detail-anchor {
+      font-family: var(--f-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .detail-num {
+      font-family: var(--f-display);
+      font-size: 6rem;
+      font-weight: 300;
+      color: var(--gold-pale);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .detail-title {
+      font-family: var(--f-display);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .detail-title em { color: var(--gold); font-style: italic; }
+    .detail-tagline { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.8; }
+
+    .detail-right {}
+    .detail-desc { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.9; margin-bottom: 2rem; }
+
+    .service-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 2rem; }
+    .service-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .service-item:last-child { border-bottom: none; }
+    .service-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 0.6rem; }
+    .service-text { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.6; }
+    .service-text strong { color: var(--ink); font-weight: 500; }
+
+    .price-block {
+      background: var(--cream-dark);
+      padding: 2rem;
+      border-left: 3px solid var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .price-block-label { font-family: var(--f-mono); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.8rem; }
+    .price-block-table { width: 100%; border-collapse: collapse; }
+    .price-block-table tr { border-bottom: 1px solid rgba(15,15,13,0.07); }
+    .price-block-table tr:last-child { border-bottom: none; }
+    .price-block-table td { padding: 0.7rem 0; font-size: 0.85rem; color: var(--ink-soft); }
+    .price-block-table td:last-child { text-align: right; font-family: var(--f-display); font-size: 1rem; color: var(--ink); }
+    .price-note { font-family: var(--f-mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--ink-muted); }
+
+    .btn-consult {
+      display: inline-block; padding: 0.9rem 2rem;
+      background: var(--ink); color: var(--white);
+      font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-consult:hover { background: var(--gold); }
+
+    /* ── INCOME SUMMARY ── */
+    .income {
+      background: var(--cream-dark);
+      padding: 5rem 3rem;
+    }
+    .income-header { margin-bottom: 3rem; }
+    .income-label { font-family: var(--f-mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .income-title { font-family: var(--f-display); font-size: 2rem; font-weight: 300; color: var(--ink); }
+
+    .income-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--rule);
+      margin-bottom: 2rem;
+    }
+    .income-item {
+      padding: 2rem 1.5rem;
+      border-right: 1px solid var(--rule);
+    }
+    .income-item:last-child { border-right: none; }
+    .income-source { font-family: var(--f-mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.5rem; }
+    .income-amount { font-family: var(--f-display); font-size: 1.8rem; font-weight: 400; color: var(--ink); margin-bottom: 0.3rem; }
+    .income-detail { font-size: 0.78rem; color: var(--ink-muted); line-height: 1.5; }
+
+    .income-total {
+      display: flex; align-items: baseline; justify-content: space-between;
+      padding: 1.5rem 2rem;
+      background: var(--ink);
+      color: var(--white);
+    }
+    .total-label { font-family: var(--f-mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .total-amount { font-family: var(--f-display); font-size: 2.5rem; font-weight: 300; color: var(--gold); }
+    .total-note { font-family: var(--f-mono); font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); }
+
+    /* ── CTA ── */
+    .cta {
+      background: var(--ink);
+      padding: 6rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(184,145,58,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,145,58,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-kicker { font-family: var(--f-mono); font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+    .cta-title { font-family: var(--f-display); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.2; color: var(--white); margin-bottom: 1rem; }
+    .cta-title em { font-style: italic; color: var(--gold); }
+    .cta-sub { font-size: 0.9rem; color: rgba(255,255,255,0.45); margin-bottom: 3rem; max-width: 44ch; margin-left: auto; margin-right: auto; }
+    .cta-contact {
+      display: inline-flex; flex-direction: column; gap: 0.4rem;
+      align-items: center;
+    }
+    .cta-email {
+      font-family: var(--f-display);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(184,145,58,0.3);
+      padding-bottom: 4px;
+      transition: border-color 0.2s;
+    }
+    .cta-email:hover { border-color: var(--gold); }
+    .cta-email-label { font-family: var(--f-mono); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+
+    /* ── FOOTER ── */
+    footer { background: #080807; color: rgba(255,255,255,0.3); padding: 2.5rem 3rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(184,145,58,0.12); }
+    footer a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--gold); }
+    .footer-brand { font-family: var(--f-display); font-size: 1rem; font-weight: 300; letter-spacing: 0.05em; color: rgba(255,255,255,0.45); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; }
+    .footer-copy { font-family: var(--f-mono); font-size: 0.6rem; letter-spacing: 0.1em; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .page-header { grid-template-columns: 1fr; gap: 2.5rem; padding: 9rem 1.5rem 3rem; }
+      .escalera-section { padding: 3rem 1.5rem; }
+      .escalon { grid-template-columns: 4rem 1fr; }
+      .escalon-price { display: none; }
+      .principle-note { flex-direction: column; gap: 1.5rem; padding: 2.5rem 1.5rem; }
+      .detail-section { padding: 3.5rem 1.5rem; }
+      .detail-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .detail-num { font-size: 4rem; }
+      .income { padding: 3rem 1.5rem; }
+      .income-grid { grid-template-columns: 1fr 1fr; }
+      .income-item { border-bottom: 1px solid var(--rule); }
+      .income-total { flex-direction: column; gap: 0.5rem; }
+      .cta { padding: 4rem 1.5rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/studio/" class="nav-brand">
+      <span class="nav-brand-main">PEAR-ROI Studio</span>
+      <span class="nav-brand-sub">Arquitectura de Alto Desempeño</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/studio/">Estudio</a></li>
+      <li><a href="/projects/">Proyectos</a></li>
+      <li><a href="/services/" class="active">Servicios</a></li>
+      <li><a href="https://prms.systems" target="_blank">PRMS Lab</a></li>
+    </ul>
+    <a href="/" class="nav-back">← pear-roi.com</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="header-left">
+      <p class="header-label">Escalera de valor · 9 servicios</p>
+      <h1 class="header-title">Servicios<br />diseñados<br />para <em>escalar.</em></h1>
+    </div>
+    <div class="header-right">
+      <p class="header-principle">
+        Nunca cotizamos por hora.<br />
+        Cotizamos por el <em>valor entregado.</em>
+      </p>
+      <p class="header-desc">
+        Un diagnóstico energético no vale el tiempo que toma realizarlo. Vale lo que el
+        cliente ahorrará en los próximos 10 años. Cada servicio está diseñado para
+        llevar al siguiente — desde la primera conversación hasta el monitoreo continuo.
+      </p>
+    </div>
+  </header>
+
+  <!-- ESCALERA OVERVIEW -->
+  <section class="escalera-section" id="escalera">
+    <div class="escalera-header reveal">
+      <h2 class="escalera-title">La escalera de valor</h2>
+      <span class="escalera-note">Cada escalón lleva al siguiente</span>
+    </div>
+
+    <div class="escalera-track">
+
+      <div class="escalon reveal" id="diagnostico" onclick="scrollToDetail('detail-01')">
+        <div class="escalon-num">
+          <div class="num-circle">1</div>
+          <span class="num-type">Entrada</span>
+        </div>
+        <div class="escalon-content">
+          <h3 class="escalon-name">Diagnóstico Energético Patrimonial</h3>
+          <p class="escalon-tagline">Alta velocidad de cierre · Puerta de entrada</p>
+          <p class="escalon-desc">Auditoría térmica + reporte ejecutivo con métricas de consumo real, identificación de pérdidas y recomendaciones priorizadas por ROI. Su función principal: convertirse en puerta de entrada. Casi todo cliente que ve su diagnóstico quiere optimizar lo que encontramos.</p>
+          <div class="escalon-includes">
+            <span class="tag">Visita técnica</span>
+            <span class="tag">Mediciones in situ</span>
+            <span class="tag">Reporte PDF</span>
+            <span class="tag">Recomendaciones por ROI</span>
+          </div>
+        </div>
+        <div class="escalon-price">
+          <p class="price-range">$18,000 – $45,000</p>
+          <p class="price-unit">MXN · por proyecto</p>
+          <a href="#contact" class="price-cta">Solicitar →</a>
+        </div>
+      </div>
+
+      <div class="escalon reveal" onclick="scrollToDetail('detail-02')">
+        <div class="escalon-num">
+          <div class="num-circle">2</div>
+          <span class="num-type">Optimización</span>
+        </div>
+        <div class="escalon-content">
+          <h3 class="escalon-name">Proyecto de Optimización y Certificación</h3>
+          <p class="escalon-tagline">Trabajo técnico profundo · Ticket medio</p>
+          <p class="escalon-desc">BIM + simulación energética avanzada + estrategia de certificación. Es donde el equipo trabaja a profundidad. El grueso del valor técnico del studio.</p>
+          <div class="escalon-includes">
+            <span class="tag">BIM</span><span class="tag">EnergyPlus</span><span class="tag">DesignBuilder</span>
+            <span class="tag tag-gold">EDGE · LEED · WELL</span>
+          </div>
+        </div>
+        <div class="escalon-price">
+          <p class="price-range">$80,000 – $280,000</p>
+          <p class="price-unit">MXN · según escala</p>
+          <a href="#contact" class="price-cta">Solicitar →</a>
+        </div>
+      </div>
+
+      <div class="escalon reveal" onclick="scrollToDetail('detail-03')">
+        <div class="escalon-num">
+          <div class="num-circle">3</div>
+          <span class="num-type">Recurrente</span>
+        </div>
+        <div class="escalon-content">
+          <h3 class="escalon-name">Monitoreo Post-Ocupación + Dashboard PEAR-ROI</h3>
+          <p class="escalon-tagline">Ingreso recurrente · Motor de flujo de caja</p>
+          <p class="escalon-desc">El servicio que muy pocos despachos tienen. Una vez instalado el sistema de monitoreo, se cobra mensualmente sin trabajo adicional significativo. Con 10 proyectos activos se tiene una base fija relevante.</p>
+          <div class="escalon-includes">
+            <span class="tag">Dashboard en tiempo real</span>
+            <span class="tag">Reporte trimestral</span>
+            <span class="tag tag-gold">Ingreso SaaS</span>
+          </div>
+        </div>
+        <div class="escalon-price">
+          <p class="price-range">$3,500 – $15,000</p>
+          <p class="price-unit">MXN · por mes</p>
+          <a href="#contact" class="price-cta">Solicitar →</a>
+        </div>
+      </div>
+
+      <div class="escalon reveal" onclick="scrollToDetail('detail-04')">
+        <div class="escalon-num">
+          <div class="num-circle">4</div>
+          <span class="num-type">B2B</span>
+        </div>
+        <div class="escalon-content">
+          <h3 class="escalon-name">Consultoría Estratégica para Desarrolladores</h3>
+          <p class="escalon-tagline">Advisory · Ticket alto</p>
+          <p class="escalon-desc">No es un proyecto — es advisory. Diferenciación comercial, due diligence energético, retainer mensual, peritajes. Se habla el idioma del inversionista, no del arquitecto.</p>
+          <div class="escalon-includes">
+            <span class="tag">Due Diligence</span><span class="tag">Retainer mensual</span>
+            <span class="tag">Peritaje oficial</span><span class="tag tag-gold">B2B</span>
+          </div>
+        </div>
+        <div class="escalon-price">
+          <p class="price-range">$18,000 – $200,000</p>
+          <p class="price-unit">MXN · según servicio</p>
+          <a href="#contact" class="price-cta">Solicitar →</a>
+        </div>
+      </div>
+
+      <div class="escalon reveal" id="diseno" onclick="scrollToDetail('detail-05')">
+        <div class="escalon-num">
+          <div class="num-circle">5</div>
+          <span class="num-type">Premium</span>
+        </div>
+        <div class="escalon-content">
+          <h3 class="escalon-name">Diseño Arquitectónico Sustentable</h3>
+          <p class="escalon-tagline">Proyecto integral desde el origen · Diferenciador máximo</p>
+          <p class="escalon-desc">Planos + simulación térmica antes de construir + proyección de consumo por año + cálculo de ROI por cada decisión de diseño + estrategia de certificación integrada desde el anteproyecto. No al final como trámite.</p>
+          <div class="escalon-includes">
+            <span class="tag">Arquitectura e interiorismo</span><span class="tag">Simulación integrada</span>
+            <span class="tag tag-gold">ROI por decisión de diseño</span>
+          </div>
+        </div>
+        <div class="escalon-price">
+          <p class="price-range">$120,000 – $600,000</p>
+          <p class="price-unit">MXN · según escala</p>
+          <a href="#contact" class="price-cta">Solicitar →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRINCIPLE NOTE -->
+  <div class="principle-note reveal">
+    <div class="principle-icon">∞</div>
+    <div class="principle-body">
+      <p class="principle-label">Principio de negocio</p>
+      <p class="principle-text">
+        Las rentas del SmartLiving cubren la operación base.<br />
+        Cada proyecto que entra es <em>utilidad, no supervivencia.</em><br />
+        Eso permite seleccionar clientes — no aceptar cualquier cosa por necesidad.
+      </p>
+    </div>
+  </div>
+
+  <!-- DETAIL: DIAGNÓSTICO -->
+  <section class="detail-section" id="detail-01">
+    <div class="detail-inner reveal">
+      <div class="detail-left">
+        <p class="detail-anchor">Escalón 01 · Entrada</p>
+        <div class="detail-num">01</div>
+        <h2 class="detail-title">Diagnóstico<br />Energético<br /><em>Patrimonial</em></h2>
+        <p class="detail-tagline">La puerta de entrada correcta. Rápido de ejecutar, inmediato en revelaciones.</p>
+      </div>
+      <div class="detail-right">
+        <p class="detail-desc">
+          Cada diagnóstico es una radiografía real del activo — no una evaluación genérica. 
+          Medimos lo que realmente consume, identificamos dónde se pierde el dinero y 
+          presentamos recomendaciones ordenadas por retorno de inversión, no por complejidad técnica.
+        </p>
+        <div class="service-list">
+          <div class="service-item"><div class="service-dot"></div><span class="service-text"><strong>Visita técnica in situ</strong> — mediciones reales de consumo, temperatura, flujos de agua y aire</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text"><strong>Identificación de puentes térmicos</strong> — donde se pierde energía sin saberlo</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text"><strong>Reporte PDF ejecutivo</strong> — legible para el propietario, no solo para el ingeniero</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text"><strong>Recomendaciones priorizadas por ROI</strong> — qué cambiar primero, cuánto se recupera, en cuánto tiempo</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text"><strong>Identificación de ruta de certificación</strong> — si el activo tiene potencial EDGE, LEED o WELL</span></div>
+        </div>
+        <div class="price-block">
+          <p class="price-block-label">Honorarios referenciales · Mercado Querétaro / Bajío</p>
+          <table class="price-block-table">
+            <tr><td>Casa habitación &lt; 200 m²</td><td>$18,000 – $25,000</td></tr>
+            <tr><td>Casa habitación 200–500 m²</td><td>$28,000 – $45,000</td></tr>
+            <tr><td>Departamento / unidad</td><td>$15,000 – $22,000</td></tr>
+            <tr><td>Edificio hasta 10 unidades</td><td>$55,000 – $90,000</td></tr>
+            <tr><td>Nave industrial / comercial</td><td>$45,000 – $120,000</td></tr>
+          </table>
+          <p class="price-note" style="margin-top:1rem">* Honorarios son referenciales. Cada proyecto se cotiza según alcance específico.</p>
+        </div>
+        <a href="#contact" class="btn-consult">Solicitar diagnóstico</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAIL: MONITOREO -->
+  <section class="detail-section" id="detail-03">
+    <div class="detail-inner reveal">
+      <div class="detail-left">
+        <p class="detail-anchor">Escalón 03 · Recurrente</p>
+        <div class="detail-num">03</div>
+        <h2 class="detail-title">Monitoreo<br />Post-Ocupación<br /><em>Continuo</em></h2>
+        <p class="detail-tagline">El ingreso que muy pocos despachos tienen. El modelo SaaS de la arquitectura.</p>
+      </div>
+      <div class="detail-right">
+        <p class="detail-desc">
+          Una vez instalado el sistema PEAR-ROI, el activo reporta su desempeño en tiempo real.
+          El studio cobra mensualmente por el análisis, la interpretación y las recomendaciones 
+          continuas. Con 10 proyectos activos en monitoreo, la base fija es significativa.
+        </p>
+        <div class="service-list">
+          <div class="service-item"><div class="service-dot"></div><span class="service-text"><strong>Dashboard PEAR-ROI activo</strong> — energía, agua, temperatura y confort en tiempo real</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text"><strong>PEAR-ROI Score mensual</strong> — el activo sabe cómo está rindiendo en todo momento</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text"><strong>Reporte trimestral de desempeño</strong> — análisis de tendencias y recomendaciones accionables</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text"><strong>Alertas automáticas de anomalías</strong> — el sistema detecta pérdidas antes de que se conviertan en problemas</span></div>
+          <div class="service-item"><div class="service-dot"></div><span class="service-text"><strong>Reporte anual con benchmarking</strong> — comparativa con estándares del sector y proyectos similares</span></div>
+        </div>
+        <div class="price-block">
+          <p class="price-block-label">Estructura de honorarios mensuales</p>
+          <table class="price-block-table">
+            <tr><td>Configuración del sistema (pago único)</td><td>$18,000 – $35,000</td></tr>
+            <tr><td>Monitoreo básico / mensual</td><td>$3,500 – $5,500</td></tr>
+            <tr><td>Monitoreo avanzado HVAC / mensual</td><td>$6,000 – $9,500</td></tr>
+            <tr><td>Dashboard para desarrollador / mensual</td><td>$8,000 – $15,000</td></tr>
+            <tr><td>Reporte anual + benchmarking</td><td>$15,000 – $28,000</td></tr>
+          </table>
+        </div>
+        <a href="#contact" class="btn-consult">Activar monitoreo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCOME SUMMARY -->
+  <section class="income">
+    <div class="income-header reveal">
+      <p class="income-label">Potencial de ingresos · Mes 6+</p>
+      <h2 class="income-title">Un mes balanceado bajo el modelo de escalera</h2>
+    </div>
+    <div class="income-grid reveal">
+      <div class="income-item">
+        <p class="income-source">Diagnóstico mensual</p>
+        <p class="income-amount">$30,000</p>
+        <p class="income-detail">1 diagnóstico de casa habitación con reporte completo</p>
+      </div>
+      <div class="income-item">
+        <p class="income-source">Proyecto optimización</p>
+        <p class="income-amount">$25,000</p>
+        <p class="income-detail">Avance parcial de proyecto de certificación en curso</p>
+      </div>
+      <div class="income-item">
+        <p class="income-source">4 contratos de monitoreo</p>
+        <p class="income-amount">$20,000</p>
+        <p class="income-detail">Ingreso recurrente sin trabajo adicional significativo</p>
+      </div>
+      <div class="income-item">
+        <p class="income-source">Retainer advisory</p>
+        <p class="income-amount">$18,000</p>
+        <p class="income-detail">1 desarrollador en consultoría estratégica mensual</p>
+      </div>
+    </div>
+    <div class="income-total reveal">
+      <span class="total-label">Total estimado mes 6+</span>
+      <span class="total-amount">$93,000 MXN</span>
+      <span class="total-note">Sin considerar proyectos de arquitectura mayor ni rentas SmartLiving</span>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section class="cta" id="contact">
+    <div class="cta-inner">
+      <p class="cta-kicker">El primer paso siempre es el mismo</p>
+      <h2 class="cta-title">Una conversación.<br />Un <em>diagnóstico honesto.</em></h2>
+      <p class="cta-sub">
+        No vendemos servicios que no corresponden al momento del activo.
+        La primera consulta es sin costo — y sin compromiso.
+      </p>
+      <div class="cta-contact">
+        <a href="mailto:studio@pear-roi.com" class="cta-email">studio@pear-roi.com</a>
+        <span class="cta-email-label">Dirección General · Oscar Adrián Hernández García</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand">PEAR-ROI Studio ®</span>
+    <ul class="footer-links">
+      <li><a href="/studio/">Estudio</a></li>
+      <li><a href="/projects/">Proyectos</a></li>
+      <li><a href="/services/">Servicios</a></li>
+      <li><a href="https://prms.systems" target="_blank">PRMS Lab</a></li>
+      <li><a href="/">PEAR-ROI Energy</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 PEAR-ROI Studio · Querétaro, México</span>
+  </footer>
+
+  <script>
+    function scrollToDetail(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
