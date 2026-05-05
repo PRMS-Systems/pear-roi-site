@@ -175,9 +175,9 @@
   };
 
   // ── LANG STATE ────────────────────────────────────────────────────────────
+
   function getLang() { return localStorage.getItem('pear-lang') || 'es'; }
   function setLang(l) { localStorage.setItem('pear-lang', l); }
-
   function applyLang(lang) {
     document.querySelectorAll('[data-t]').forEach(el => {
       const key = el.getAttribute('data-t');
@@ -187,76 +187,78 @@
       const key = el.getAttribute('data-t-placeholder');
       if (T[key] && T[key][lang] !== undefined) el.placeholder = T[key][lang];
     });
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    document.querySelectorAll('.lang-btn').forEach(b =>
+      b.classList.toggle('active', b.dataset.lang === lang)
+    );
     document.documentElement.lang = lang;
   }
 
   // ── NAV INJECT ────────────────────────────────────────────────────────────
+
   function buildNav() {
     const el = document.getElementById('site-nav');
     if (!el) return;
     const path = window.location.pathname;
     const page = path === '/' ? 'index.html' : path.split('/').pop();
-    
     const links = [
-      { href: 'index.html', key: 'nav.home', logo: true },
+      { href: 'index.html', key: 'nav.home' },
       { href: 'product.html', key: 'nav.product' },
-      { href: 'app.html',     key: 'nav.app' },
+      { href: 'app.html', key: 'nav.app' },
       { href: 'technology.html', key: 'nav.technology' },
       { href: 'contact.html', key: 'nav.contact' },
     ];
 
-el.innerHTML = `
+    el.innerHTML = `
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img src="favicon.png" alt="PEAR-ROI" onerror="this.style.display='none'">
+          <span class="nav-logo-text">PEAR-ROI</span>
+        </div>
 
-  <div class="nav-container">
+        <!-- BOTÓN MOBILE -->
 
-    <div class="nav-logo">
-      <img src="favicon.png" alt="PEAR-ROI" onerror="this.style.display='none'">
-      <span class="nav-logo-text">PEAR-ROI</span>
-    </div>
- 
-
-    <!-- BOTÓN MOBILE -->
-    <button class="nav-toggle" id="navToggle">☰</button>
-
-    <ul class="nav-links" id="navLinks">      
-${links.map(l => `
-  <li>
-    <a href="${l.href}" class="${page===l.href?'active':''}" data-t="${l.key}">
-      ${T[l.key]['es']}
-    </a>
-  </li>
-`).join('')}
+        <button class="nav-toggle" id="navToggle">☰</button>
+        <ul class="nav-links" id="navLinks">      
+          ${links.map(l => `
+            <li>
+              <a href="${l.href}" class="${page===l.href?'active':''}" data-t="${l.key}">
+                ${T[l.key]['es']}
+              </a>
+            </li>
+          `).join('')}
         </ul>
-        
-
-    <div class="nav-right">
-      <div class="lang-switcher">
-        <button class="lang-btn" data-lang="es">ES</button>
-        <span class="lang-sep">|</span>
-        <button class="lang-btn" data-lang="en">EN</button>
+        <div class="nav-right">
+          <div class="lang-switcher">
+           <button class="lang-btn" data-lang="es">ES</button>
+            <span class="lang-sep">|</span>
+            <button class="lang-btn" data-lang="en">EN</button>
+          </div>
+        </div>
       </div>
-     
-    </div>
+    `;
 
-  </div>
-`;
+    // ✅ EVENTOS DESPUÉS DE RENDERIZAR
+
+    const toggle = el.querySelector('#navToggle');
+    const linksMenu = el.querySelector('#navLinks');
+    if (toggle && linksMenu) {
+      toggle.addEventListener('click', () => {
+        linksMenu.classList.toggle('active');
+      });
+    }
+
+    // idioma
 
     el.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => { setLang(btn.dataset.lang); applyLang(btn.dataset.lang); });
+      btn.addEventListener('click', () => {
+        setLang(btn.dataset.lang);
+        applyLang(btn.dataset.lang);
+      });
     });
   }
-  
-//  AGREGA ESTO AQUÍ
-const toggle = document.getElementById('navToggle');
-const linksMenu = document.getElementById('navLinks');
-if (toggle && linksMenu) {
-  toggle.addEventListener('click', () => {
-    linksMenu.classList.toggle('active');
-  });
-}
 
   // ── SCROLL REVEAL ─────────────────────────────────────────────────────────
+
   function initReveal() {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
@@ -268,12 +270,11 @@ if (toggle && linksMenu) {
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   }
-
   // ── INIT ──────────────────────────────────────────────────────────────────
+
   document.addEventListener('DOMContentLoaded', () => {
     buildNav();
     applyLang(getLang());
     initReveal();
   });
-
 })();
