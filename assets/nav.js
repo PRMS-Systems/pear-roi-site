@@ -236,7 +236,7 @@ ${links.map(l => `
         <span class="lang-sep">|</span>
         <button class="lang-btn" data-lang="en">EN</button>
       </div>
-      <a href="contact.html" class="nav-cta" data-t="nav.cta">${T['nav.cta']['es']}</a>
+     
     </div>
 
   </div>
