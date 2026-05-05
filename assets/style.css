@@ -361,3 +361,25 @@ footer { background: var(--black); color: var(--white); padding: clamp(3rem, 6vw
   color: #111827;           /* negro elegante */
   font-weight: 500;         /* más presencia */
 }
+
+.hero-app-image {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 32px;
+}
+/* App */
+.hero-app-image img {
+  width: 100%;
+  max-width: 420px; /* tamaño tipo iPhone premium */
+  height: auto;
+  border-radius: 32px;
+  
+  /* efecto premium */
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.15),
+    0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+.hero-app-image img:hover {
+  transform: scale(1.02);
+}
