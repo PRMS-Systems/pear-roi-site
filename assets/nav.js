@@ -6,11 +6,11 @@
   const T = {
     // NAV
     'nav.home':       { es: 'Inicio',        en: 'Home' },
-    'nav.product':    { es: 'Producto',      en: 'Product' },
+    'nav.product':     { es: 'Sistema',      en: 'System' },
     'nav.app':        { es: 'App',           en: 'App' },
-    'nav.technology': { es: 'Tecnología',    en: 'Technology' },
-    'nav.contact':    { es: 'Contacto',      en: 'Contact' },
-    'nav.cta':        { es: 'Comenzar',      en: 'Get Started' },
+    'nav.technology': { es: 'Desempeño',     en: 'Performance' },
+    'nav.contact':    { es: 'Evolución',     en: 'Evolution' },
+    
 
     // INDEX
     'home.eyebrow':   { es: 'Sistema Residencial de Alto Desempeño', en: 'High-Performance Residential System' },
