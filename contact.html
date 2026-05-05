@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contacto — PEAR-ROI®</title>
-  <meta name="description" content="Habla con un especialista PEAR-ROI. Desarrolladores, propietarios, distribuidores e inversionistas bienvenidos."/>
+  <title>Evolución del sistema — PEAR-ROI®</title>
+  <meta name="description" content="Tu espacio no termina de instalarse. Empieza a evolucionar con PEAR-ROI."/>
   <link rel="stylesheet" href="assets/style.css"/>
 </head>
 <body>
@@ -14,119 +14,145 @@
 <main>
 
   <!-- HERO -->
-  <section class="hero" style="min-height:50svh; padding:4rem var(--pad) 3rem;">
-    <p class="hero-eyebrow" data-t="contact.eyebrow">Contacto</p>
+  <section class="hero" style="min-height:55svh;">
+    <p class="hero-eyebrow">Evolución del sistema</p>
+
     <h1>
-      <span data-t="contact.h1a">Construyamos</span><br>
-      <em data-t="contact.h1b">algo juntos.</em>
+      Evolucionando<br>
+      <em>tu espacio.</em>
     </h1>
-    <p class="hero-sub" data-t="contact.sub">
-      Habla con un especialista PEAR-ROI. Ya sea que seas desarrollador inmobiliario, propietario o distribuidor — tenemos una solución para ti.
+
+    <p class="hero-sub">
+      Tu espacio no termina de instalarse. Empieza a evolucionar.
     </p>
   </section>
 
   <div class="divider"></div>
 
-  <!-- CONTACT CONTENT -->
+  <!-- BLOQUES PRINCIPALES -->
   <section class="section">
     <div class="container">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start;">
 
-        <!-- FORM -->
-        <div class="reveal">
-          <p class="section-label">Formulario</p>
-          <h2 style="font-family:var(--serif); font-size:clamp(1.5rem,3vw,2.2rem); font-weight:400; margin-bottom:2rem; line-height:1.2;">Cuéntanos tu proyecto.</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem;">
 
-          <form onsubmit="handleSubmit(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label data-t="contact.form.name">Nombre</label>
-                <input type="text" data-t-placeholder="contact.form.name" placeholder="Nombre" required>
-              </div>
-              <div class="form-group">
-                <label data-t="contact.form.email">Correo electrónico</label>
-                <input type="email" placeholder="correo@ejemplo.com" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label data-t="contact.form.type">Soy...</label>
-              <select>
-                <option value="" disabled selected data-t="contact.form.type">Soy...</option>
-                <option data-t="contact.form.t1">Desarrollador inmobiliario</option>
-                <option data-t="contact.form.t2">Propietario de vivienda</option>
-                <option data-t="contact.form.t3">Distribuidor / Instalador</option>
-                <option data-t="contact.form.t4">Inversionista</option>
-                <option data-t="contact.form.t5">Otro</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label data-t="contact.form.msg">Cuéntanos tu proyecto</label>
-              <textarea data-t-placeholder="contact.form.msg" placeholder="Cuéntanos tu proyecto..."></textarea>
-            </div>
-            <button type="submit" class="btn-primary" style="width:100%; border:none; cursor:pointer; font-family:var(--sans); font-size:0.9rem; padding:1rem;" data-t="contact.form.btn">
-              Enviar mensaje
-            </button>
-          </form>
-
-          <div id="form-thanks" style="display:none; text-align:center; padding:3rem; background:var(--off-white); border-radius:var(--radius); margin-top:1rem;">
-            <div style="font-size:2rem; margin-bottom:1rem;">✓</div>
-            <h3 style="font-family:var(--serif); font-size:1.5rem; font-weight:400; margin-bottom:0.5rem;">¡Mensaje enviado!</h3>
-            <p style="font-size:0.9rem; color:var(--gray-600);">Te contactaremos en menos de 24 horas.</p>
-          </div>
-        </div>
-
-        <!-- INFO -->
-        <div class="reveal">
-          <p class="section-label" data-t="contact.info.label">Información</p>
-          <h2 style="font-family:var(--serif); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:400; margin-bottom:1rem; line-height:1.25;" data-t="contact.info.h2">Estamos en Querétaro, México.</h2>
-          <p style="font-size:0.9rem; color:var(--gray-600); line-height:1.75; margin-bottom:2.5rem;" data-t="contact.info.p">
-            Atendemos proyectos en toda la República Mexicana y con desarrolladores internacionales interesados en el sistema PEAR-ROI.
+        <!-- SOPORTE REDEFINIDO -->
+        <div class="bento-card">
+          <h3>Optimización del sistema</h3>
+          <p>
+            Ajustes, revisión y seguimiento continuo del desempeño de tu vivienda.
+            Detectamos desviaciones antes de que se conviertan en pérdidas.
           </p>
+        </div>
 
-          <!-- Info cards -->
-          <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="background:var(--off-white); border-radius:var(--radius-sm); padding:1.75rem;">
-              <h3 style="font-size:0.95rem; font-weight:600; margin-bottom:0.5rem;" data-t="contact.dev.h3">Para desarrolladores</h3>
-              <p style="font-size:0.85rem; color:var(--gray-600); line-height:1.7;" data-t="contact.dev.p">Ofrecemos kits de demostración, visitas técnicas y presentaciones para equipos de ventas. El primer kit es un piloto sin riesgo.</p>
-            </div>
-            <div style="background:var(--off-white); border-radius:var(--radius-sm); padding:1.75rem;">
-              <h3 style="font-size:0.95rem; font-weight:600; margin-bottom:0.5rem;" data-t="contact.dist.h3">Distribuidores</h3>
-              <p style="font-size:0.85rem; color:var(--gray-600); line-height:1.7;" data-t="contact.dist.p">Programa de distribución activo. Márgenes competitivos, soporte técnico completo y materiales de venta provistos.</p>
-            </div>
-            <div style="background:var(--black); border-radius:var(--radius-sm); padding:1.75rem;">
-              <h3 style="font-size:0.95rem; font-weight:600; margin-bottom:0.5rem; color:white;">PRMS Studio</h3>
-              <p style="font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:1rem;">¿Buscas diseño arquitectónico bajo el framework PRMS? Visita el estudio.</p>
-              <a href="https://prms.systems" target="_blank" class="prms-badge" style="border-color:rgba(255,255,255,0.2); color:rgba(255,255,255,0.6);">prms.systems →</a>
-            </div>
+        <!-- CAPACITACIÓN -->
+        <div class="bento-card">
+          <h3>Capacitación</h3>
+          <p>
+            Aprende a interpretar tu vivienda como sistema.
+            Desde onboarding hasta certificación como instalador PEAR-ROI.
+          </p>
+        </div>
+
+        <!-- CONTACTO REDEFINIDO -->
+        <div class="bento-card dark">
+          <h3>Desarrollo personalizado</h3>
+          <p>
+            Cada vivienda es distinta. Diseñamos configuraciones específicas para maximizar desempeño, eficiencia y valor del activo.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FORMULARIO (RECONTEXTUALIZADO) -->
+  <section class="section">
+    <div class="container" style="max-width:720px;">
+
+      <p class="section-label center">Optimización</p>
+
+      <h2 class="display center" style="margin-bottom:1rem;">
+        Evoluciona tu sistema
+      </h2>
+
+      <p class="lead center" style="margin-bottom:2.5rem;">
+        Comparte cómo se comporta tu vivienda y definimos el siguiente nivel de desempeño.
+      </p>
+
+      <form onsubmit="handleSubmit(event)">
+        
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" placeholder="Nombre" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Correo electrónico" required>
           </div>
         </div>
 
+        <div class="form-group">
+          <select required>
+            <option value="" disabled selected>Tipo de usuario</option>
+            <option>Propietario</option>
+            <option>Desarrollador</option>
+            <option>Distribuidor</option>
+            <option>Instalador</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <textarea placeholder="¿Qué quieres mejorar en tu sistema?"></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width:100%;">
+          Evolucionar mi sistema
+        </button>
+
+      </form>
+
+      <div id="form-thanks" style="display:none; text-align:center; padding:3rem; background:var(--off-white); border-radius:var(--radius); margin-top:1rem;">
+        <h3>Solicitud recibida</h3>
+        <p>Un especialista analizará tu sistema y te contactará.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MENSAJE SISTEMA -->
+  <section class="section">
+    <div class="container center" style="max-width:720px;">
+      
+      <h2 class="display">
+        Tu vivienda no es estática.
+      </h2>
+
+      <p class="lead">
+        Es un sistema en evolución.<br>
+        PEAR-ROI no termina en la instalación.<br>
+        Empieza en el comportamiento.
+      </p>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA FINAL -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-section reveal">
+        <h2>El siguiente nivel de tu vivienda empieza ahora.</h2>
+        <p>Optimiza, mide y evoluciona tu espacio con datos reales.</p>
+        <a href="#" class="btn-primary">Iniciar evolución</a>
       </div>
     </div>
   </section>
 
-<section class="system-cycle">
-  <div class="container">
-    <h3>Este ecosistema funciona como un sistema arquitectónico de circuito cerrado</h3>
-    <p class="cycle-intro">
-      PRMS establece el marco rector. PEAR-ROI implementa el sistema en entornos construidos, 
-      integrando diseño, construcción, medición del rendimiento y retroalimentación continua.
-    </p>
-    <div class="cycle-grid">
-      <div><strong>PRMS</strong> → Define el marco</div>
-      <div><strong>PEAR-ROI Studio</strong> → Diseña dentro del sistema</div>
-      <div><strong>PEAR-ROI</strong> → Construye el sistema</div>
-      <div><strong>App</strong> → Mide el desempeño del sistema</div>
-      <div><strong>Data</strong> → Retroalimenta PRMS</div>
-    </div>
-    <div class="ecosystem-logos">
-      <img src="/prms-logo.png" alt="PRMS">
-      <span>+</span>
-      <img src="/pear-roi-logo.png" alt="PEAR-ROI">
-    </div>
-  </div>
-</section>
-  
 </main>
 
 <footer>
@@ -134,26 +160,11 @@
     <div class="footer-top">
       <div class="footer-brand">
         <img src="assets/logo.jpg" alt="PEAR-ROI" style="height:32px;border-radius:4px;">
-        <p style="margin-top:1rem;" data-t="footer.tagline">Sistema operativo para el hogar del futuro.</p>
+        <p style="margin-top:1rem;">Sistema operativo para el hogar del futuro.</p>
       </div>
-      <div class="footer-col"><h4 data-t="footer.products">Productos</h4><ul>
-        <li><a href="product.html" data-t="kit.h2oe.name">Kit H2O Essential</a></li>
-        <li><a href="product.html" data-t="kit.energy.name">Kit Energy Pro</a></li>
-        <li><a href="product.html" data-t="kit.habitat.name">Kit Habitat Intelligence</a></li>
-      </ul></div>
-      <div class="footer-col"><h4 data-t="footer.company">Empresa</h4><ul>
-        <li><a href="app.html" data-t="nav.app">App</a></li>
-        <li><a href="technology.html" data-t="nav.technology">Tecnología</a></li>
-        <li><a href="https://prms.systems" target="_blank">PEAR-ROI Studio</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>PRMS</h4><ul>
-        <li><a href="https://prms.systems" target="_blank">prms.systems</a></li>
-        <li><a href="https://prms.systems/framework" target="_blank">Framework</a></li>
-      </ul></div>
     </div>
     <div class="footer-bottom">
-      <p data-t="footer.copy">© 2025 PEAR-ROI · Renewable Pear. Todos los derechos reservados.</p>
-      <a href="https://prms.systems" target="_blank" data-t="footer.prms">Powered by PRMS Framework</a>
+      <p>© 2025 PEAR-ROI · Renewable Pear.</p>
     </div>
   </div>
 </footer>
@@ -166,5 +177,6 @@ function handleSubmit(e) {
   document.getElementById('form-thanks').style.display = 'block';
 }
 </script>
+
 </body>
 </html>
