@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyectos — PEAR-ROI Studio</title>
+  <meta name="description" content="Portafolio de proyectos de arquitectura de alto desempeño. Activos diseñados para producir valor medible." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #0f0f0d;
+      --ink-soft:  #3a3a35;
+      --ink-muted: #8a8a7e;
+      --cream:     #f7f4ef;
+      --cream-dark:#ede9e1;
+      --gold:      #b8913a;
+      --gold-pale: #e8d9b5;
+      --white:     #fdfcf9;
+      --rule:      rgba(15,15,13,0.12);
+      --f-display: 'Cormorant Garamond', Georgia, serif;
+      --f-body:    'DM Sans', sans-serif;
+      --f-mono:    'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--white);
+      font-family: var(--f-body);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 3rem;
+      background: rgba(15,15,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184,145,58,0.15);
+    }
+    .nav-brand { display: flex; flex-direction: column; gap: 1px; text-decoration: none; }
+    .nav-brand-main { font-family: var(--f-display); font-size: 1.15rem; font-weight: 400; letter-spacing: 0.08em; color: var(--white); text-transform: uppercase; }
+    .nav-brand-sub { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-back { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,0.35); border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s; padding-bottom: 1px; }
+    .nav-back:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 12rem 3rem 5rem;
+      background: var(--ink);
+      border-bottom: 1px solid rgba(184,145,58,0.15);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: 'PROJECTS';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--f-display);
+      font-size: clamp(8rem, 18vw, 20rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.02);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: -0.02em;
+    }
+
+    .header-left { position: relative; }
+    .header-eyebrow { font-family: var(--f-mono); font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .header-title { font-family: var(--f-display); font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 300; line-height: 1.05; color: var(--white); }
+    .header-title em { font-style: italic; color: var(--gold); }
+
+    .header-right { position: relative; }
+    .header-desc { font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.9; max-width: 44ch; border-left: 1px solid rgba(184,145,58,0.4); padding-left: 1.5rem; }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      background: var(--ink);
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky;
+      top: 5rem;
+      z-index: 50;
+    }
+    .filter-label { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-right: 1rem; }
+    .filter-btn {
+      font-family: var(--f-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      background: transparent;
+      color: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+    .filter-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); font-weight: 500; }
+
+    /* ── FEATURED PROJECT ── */
+    .featured {
+      padding: 5rem 3rem 3rem;
+      background: var(--ink);
+    }
+    .featured-inner {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 0;
+      border: 1px solid rgba(184,145,58,0.2);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .featured-img {
+      aspect-ratio: 16/10;
+      background: linear-gradient(145deg, #1c1c15 0%, #252519 50%, #1a1a12 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-img::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(184,145,58,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,145,58,0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    .featured-img-label {
+      position: absolute; top: 2rem; left: 2rem;
+      font-family: var(--f-mono); font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      background: rgba(15,15,13,0.8); padding: 0.4rem 0.8rem;
+      backdrop-filter: blur(4px);
+    }
+    .featured-img-placeholder {
+      position: absolute; bottom: 2.5rem; left: 2.5rem;
+      font-family: var(--f-display); font-size: 1.2rem;
+      color: rgba(184,145,58,0.3); font-weight: 300;
+    }
+
+    .featured-content {
+      padding: 3.5rem 3rem;
+      background: rgba(255,255,255,0.02);
+      border-left: 1px solid rgba(184,145,58,0.15);
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .featured-tag { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .featured-title { font-family: var(--f-display); font-size: 2.2rem; font-weight: 300; line-height: 1.15; color: var(--white); margin-bottom: 1rem; }
+    .featured-meta { font-family: var(--f-mono); font-size: 0.65rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 1.5rem; }
+    .featured-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.85; margin-bottom: 2.5rem; }
+
+    .featured-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+      padding: 1.5rem; background: rgba(184,145,58,0.06);
+      border: 1px solid rgba(184,145,58,0.15);
+      margin-bottom: 2rem;
+    }
+    .fstat { display: flex; flex-direction: column; gap: 0.3rem; }
+    .fstat-val { font-family: var(--f-display); font-size: 1.8rem; font-weight: 400; color: var(--white); line-height: 1; }
+    .fstat-lbl { font-family: var(--f-mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+    .btn-see {
+      display: inline-block; padding: 0.85rem 2rem;
+      background: var(--gold); color: var(--ink);
+      font-family: var(--f-mono); font-size: 0.7rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      text-decoration: none; font-weight: 500;
+      transition: opacity 0.2s; align-self: flex-start;
+    }
+    .btn-see:hover { opacity: 0.85; }
+
+    /* ── SECTION TITLE ── */
+    .section-rule {
+      padding: 3rem 3rem 1.5rem;
+      background: var(--ink);
+      display: flex; align-items: center; gap: 2rem;
+    }
+    .section-rule-label { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+    .section-rule-line { flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+    .section-rule-count { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.2); }
+
+    /* ── PROJECT GRID ── */
+    .projects-grid {
+      padding: 0 3rem 3rem;
+      background: var(--ink);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      border: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.3s;
+      text-decoration: none;
+      display: block;
+      background: rgba(255,255,255,0.01);
+    }
+    .project-card:hover { border-color: rgba(184,145,58,0.4); }
+    .project-card:hover .project-img-inner { transform: scale(1.03); }
+
+    .project-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      position: relative;
+    }
+    .project-img-inner {
+      width: 100%; height: 100%;
+      transition: transform 0.5s ease;
+    }
+    .project-img-bg {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .project-img-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(184,145,58,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,145,58,0.04) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    /* Different tones per project type */
+    .bg-residential { background: linear-gradient(145deg, #1a1a14, #222218); }
+    .bg-commercial  { background: linear-gradient(145deg, #141618, #1c1e22); }
+    .bg-retrofit    { background: linear-gradient(145deg, #181614, #201e1a); }
+    .bg-consulting  { background: linear-gradient(145deg, #151818, #1c2020); }
+
+    .project-type-tag {
+      position: absolute; top: 1rem; right: 1rem;
+      font-family: var(--f-mono); font-size: 0.58rem; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 0.3rem 0.6rem;
+      background: rgba(15,15,13,0.75); color: var(--gold);
+      backdrop-filter: blur(4px);
+    }
+
+    .project-info { padding: 1.5rem; }
+    .project-number { font-family: var(--f-mono); font-size: 0.58rem; letter-spacing: 0.18em; color: rgba(255,255,255,0.25); margin-bottom: 0.5rem; text-transform: uppercase; }
+    .project-name { font-family: var(--f-display); font-size: 1.2rem; font-weight: 400; color: var(--white); margin-bottom: 0.4rem; line-height: 1.2; }
+    .project-location { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 1rem; }
+    .project-brief { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.7; margin-bottom: 1.2rem; }
+
+    .project-scores {
+      display: flex; gap: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .pscore { display: flex; flex-direction: column; gap: 0.2rem; }
+    .pscore-val { font-family: var(--f-display); font-size: 1.3rem; font-weight: 400; color: var(--gold); line-height: 1; }
+    .pscore-lbl { font-family: var(--f-mono); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+
+    /* ── IN PROGRESS ── */
+    .in-progress {
+      padding: 0 3rem 5rem;
+      background: var(--ink);
+    }
+    .progress-list { display: flex; flex-direction: column; gap: 0; border: 1px solid rgba(255,255,255,0.07); }
+    .progress-item {
+      display: grid;
+      grid-template-columns: 3rem 1fr 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      padding: 1.8rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.2s;
+    }
+    .progress-item:last-child { border-bottom: none; }
+    .progress-item:hover { background: rgba(255,255,255,0.02); }
+    .progress-num { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.2); }
+    .progress-name { font-family: var(--f-display); font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,0.7); }
+    .progress-type { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+    .progress-status { display: flex; align-items: center; gap: 0.6rem; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .status-label { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(184,145,58,0.7); }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: var(--gold);
+      padding: 4rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+    .cta-strip-text { display: flex; flex-direction: column; gap: 0.5rem; }
+    .cta-strip-label { font-family: var(--f-mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(15,15,13,0.6); }
+    .cta-strip-title { font-family: var(--f-display); font-size: 2rem; font-weight: 300; color: var(--ink); line-height: 1.2; }
+    .btn-dark { display: inline-block; padding: 1rem 2.5rem; background: var(--ink); color: var(--white); font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; }
+    .btn-dark:hover { opacity: 0.8; }
+
+    /* ── FOOTER ── */
+    footer { background: #080807; color: rgba(255,255,255,0.3); padding: 2.5rem 3rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(184,145,58,0.12); }
+    footer a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--gold); }
+    .footer-brand { font-family: var(--f-display); font-size: 1rem; font-weight: 300; letter-spacing: 0.05em; color: rgba(255,255,255,0.45); }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { font-family: var(--f-mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; }
+    .footer-copy { font-family: var(--f-mono); font-size: 0.6rem; letter-spacing: 0.1em; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .page-header { grid-template-columns: 1fr; gap: 2rem; padding: 9rem 1.5rem 3rem; }
+      .filter-bar { padding: 1.2rem 1.5rem; flex-wrap: wrap; top: 4.5rem; }
+      .featured { padding: 2.5rem 1.5rem 2rem; }
+      .featured-inner { grid-template-columns: 1fr; }
+      .featured-content { border-left: none; border-top: 1px solid rgba(184,145,58,0.15); }
+      .section-rule { padding: 2rem 1.5rem 1rem; }
+      .projects-grid { padding: 0 1.5rem 2rem; grid-template-columns: 1fr; }
+      .in-progress { padding: 0 1.5rem 3rem; }
+      .progress-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .cta-strip { flex-direction: column; padding: 3rem 1.5rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/studio/" class="nav-brand">
+      <span class="nav-brand-main">PEAR-ROI Studio</span>
+      <span class="nav-brand-sub">Arquitectura de Alto Desempeño</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/studio/">Estudio</a></li>
+      <li><a href="/projects/" class="active">Proyectos</a></li>
+      <li><a href="/services/">Servicios</a></li>
+      <li><a href="https://prms.systems" target="_blank">PRMS Lab</a></li>
+    </ul>
+    <a href="/" class="nav-back">← pear-roi.com</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="header-left">
+      <p class="header-eyebrow">Portafolio · 2020 – 2025</p>
+      <h1 class="header-title">Activos que<br /><em>producen</em><br />lo que prometen.</h1>
+    </div>
+    <div class="header-right">
+      <p class="header-desc">
+        Cada proyecto en este portafolio es un laboratorio. No documentamos solo
+        lo que se diseñó — documentamos lo que el espacio produce en operación real.
+        Sin datos post-ocupación, no hay aprendizaje. Sin aprendizaje, no hay evolución.
+      </p>
+    </div>
+  </header>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <span class="filter-label">Filtrar por:</span>
+    <button class="filter-btn active" onclick="filterProjects('all', this)">Todos</button>
+    <button class="filter-btn" onclick="filterProjects('residencial', this)">Residencial</button>
+    <button class="filter-btn" onclick="filterProjects('comercial', this)">Comercial</button>
+    <button class="filter-btn" onclick="filterProjects('retrofit', this)">Retrofit</button>
+    <button class="filter-btn" onclick="filterProjects('consultoria', this)">Consultoría</button>
+  </div>
+
+  <!-- FEATURED PROJECT -->
+  <section class="featured">
+    <div class="featured-inner reveal">
+      <div class="featured-img">
+        <span class="featured-img-label">★ Caso Ancla · EDGE Certified · IFC / World Bank</span>
+        <div class="featured-img-placeholder">SmartLiving Milenio III-308</div>
+        <!-- Replace with: <img src="images/smartliving-01.jpg" alt="SmartLiving Milenio III-308" style="width:100%;height:100%;object-fit:cover;opacity:0.75"> -->
+      </div>
+      <div class="featured-content">
+        <div>
+          <p class="featured-tag">★ Proyecto Referencia · Residencial</p>
+          <h2 class="featured-title">SmartLiving<br />Milenio III-308</h2>
+          <p class="featured-meta">Querétaro, Qro · 503 m² · 2023 · Clima BSk</p>
+          <p class="featured-desc">
+            El primer nodo residencial diseñado integralmente bajo metodología PRMS.
+            Produce más energía de la que consume. Monitorea su desempeño en tiempo real.
+            Los datos publicados corresponden al primer año de operación verificada — no a proyecciones.
+          </p>
+          <div class="featured-stats">
+            <div class="fstat">
+              <span class="fstat-val">0.78</span>
+              <span class="fstat-lbl">PEAR-ROI Score</span>
+            </div>
+            <div class="fstat">
+              <span class="fstat-val">102%</span>
+              <span class="fstat-lbl">Autosuficiencia energética</span>
+            </div>
+            <div class="fstat">
+              <span class="fstat-val">44.7%</span>
+              <span class="fstat-lbl">Ahorro energético</span>
+            </div>
+            <div class="fstat">
+              <span class="fstat-val">53.4%</span>
+              <span class="fstat-lbl">Reducción agua potable</span>
+            </div>
+          </div>
+        </div>
+        <a href="/projects/smartliving/" class="btn-see">Ver caso completo →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLETED PROJECTS -->
+  <div class="section-rule">
+    <span class="section-rule-label">Proyectos completados</span>
+    <div class="section-rule-line"></div>
+    <span class="section-rule-count">05 proyectos</span>
+  </div>
+
+  <section class="projects-grid">
+
+    <a href="/projects/smartliving/" class="project-card reveal" data-type="residencial">
+      <div class="project-img">
+        <div class="project-img-inner">
+          <div class="project-img-bg bg-residential">
+            <!-- Replace with actual photo -->
+          </div>
+        </div>
+        <span class="project-type-tag">Residencial · Premium</span>
+      </div>
+      <div class="project-info">
+        <p class="project-number">P · 001 · 2023</p>
+        <h3 class="project-name">SmartLiving Milenio III-308</h3>
+        <p class="project-location">Querétaro · 503 m²</p>
+        <p class="project-brief">Nodo residencial PRMS. Diseño, simulación energética, certificación EDGE y sistema de monitoreo en tiempo real.</p>
+        <div class="project-scores">
+          <div class="pscore"><span class="pscore-val">0.78</span><span class="pscore-lbl">PEAR-ROI Score</span></div>
+          <div class="pscore"><span class="pscore-val">102%</span><span class="pscore-lbl">Autosufic.</span></div>
+          <div class="pscore"><span class="pscore-val">EDGE</span><span class="pscore-lbl">Certificado</span></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="project-card reveal" data-type="retrofit">
+      <div class="project-img">
+        <div class="project-img-inner">
+          <div class="project-img-bg bg-retrofit"></div>
+        </div>
+        <span class="project-type-tag">Retrofit · Residencial</span>
+      </div>
+      <div class="project-info">
+        <p class="project-number">P · 002 · 2023</p>
+        <h3 class="project-name">Casa Jurica — Optimización Envolvente</h3>
+        <p class="project-location">Querétaro · 280 m²</p>
+        <p class="project-brief">Retrofit de envolvente climática con simulación comparativa. Reducción de carga térmica 38% sin modificación estructural.</p>
+        <div class="project-scores">
+          <div class="pscore"><span class="pscore-val">38%</span><span class="pscore-lbl">Reducción carga</span></div>
+          <div class="pscore"><span class="pscore-val">14 mo</span><span class="pscore-lbl">Payback</span></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="project-card reveal" data-type="comercial">
+      <div class="project-img">
+        <div class="project-img-inner">
+          <div class="project-img-bg bg-commercial"></div>
+        </div>
+        <span class="project-type-tag">Comercial · Oficinas</span>
+      </div>
+      <div class="project-info">
+        <p class="project-number">P · 003 · 2024</p>
+        <h3 class="project-name">Oficinas Corporativas Bajío</h3>
+        <p class="project-location">San Juan del Río · 1,200 m²</p>
+        <p class="project-brief">Diseño bioclimático con integración HVAC de alto rendimiento. Estrategia LEED BD+C en proceso de registro.</p>
+        <div class="project-scores">
+          <div class="pscore"><span class="pscore-val">31%</span><span class="pscore-lbl">Ahorro energético</span></div>
+          <div class="pscore"><span class="pscore-val">LEED</span><span class="pscore-lbl">En proceso</span></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="project-card reveal" data-type="consultoria">
+      <div class="project-img">
+        <div class="project-img-inner">
+          <div class="project-img-bg bg-consulting"></div>
+        </div>
+        <span class="project-type-tag">Consultoría · B2B</span>
+      </div>
+      <div class="project-info">
+        <p class="project-number">P · 004 · 2024</p>
+        <h3 class="project-name">Due Diligence Energético — Portafolio Residencial</h3>
+        <p class="project-location">Querétaro · 12 unidades</p>
+        <p class="project-brief">Diagnóstico integral de portafolio para fondo de inversión. Valorización diferencial y ruta de certificación estratégica.</p>
+        <div class="project-scores">
+          <div class="pscore"><span class="pscore-val">12</span><span class="pscore-lbl">Unidades auditadas</span></div>
+          <div class="pscore"><span class="pscore-val">+9%</span><span class="pscore-lbl">Premium por m²</span></div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="project-card reveal" data-type="residencial">
+      <div class="project-img">
+        <div class="project-img-inner">
+          <div class="project-img-bg bg-residential"></div>
+        </div>
+        <span class="project-type-tag">Residencial · WELL</span>
+      </div>
+      <div class="project-info">
+        <p class="project-number">P · 005 · 2025</p>
+        <h3 class="project-name">Vivienda WELL — El Refugio</h3>
+        <p class="project-location">Querétaro · 190 m²</p>
+        <p class="project-brief">Interiorismo y arquitectura bajo criterios WELL v2. Calidad de aire, confort térmico y confort visual como ejes de diseño.</p>
+        <div class="project-scores">
+          <div class="pscore"><span class="pscore-val">0.71</span><span class="pscore-lbl">PEAR-ROI Score</span></div>
+          <div class="pscore"><span class="pscore-val">WELL</span><span class="pscore-lbl">En certificación</span></div>
+        </div>
+      </div>
+    </a>
+
+  </section>
+
+  <!-- IN PROGRESS -->
+  <div class="section-rule">
+    <span class="section-rule-label">En desarrollo</span>
+    <div class="section-rule-line"></div>
+    <span class="section-rule-count">03 proyectos activos</span>
+  </div>
+
+  <section class="in-progress">
+    <div class="progress-list reveal">
+      <div class="progress-item">
+        <span class="progress-num">IP·01</span>
+        <span class="progress-name">Desarrollo Residencial Sustentable — 24 unidades</span>
+        <span class="progress-type">Residencial · Certificación EDGE</span>
+        <div class="progress-status"><span class="status-dot"></span><span class="status-label">Simulación energética</span></div>
+      </div>
+      <div class="progress-item">
+        <span class="progress-num">IP·02</span>
+        <span class="progress-name">Retrofit Industrial — Nave Logística Bajío</span>
+        <span class="progress-type">Industrial · Auditoría CMVP</span>
+        <div class="progress-status"><span class="status-dot"></span><span class="status-label">Diagnóstico in situ</span></div>
+      </div>
+      <div class="progress-item">
+        <span class="progress-num">IP·03</span>
+        <span class="progress-name">Advisory Estratégico — Fondo Inmobiliario LATAM</span>
+        <span class="progress-type">Consultoría · Retainer mensual</span>
+        <div class="progress-status"><span class="status-dot"></span><span class="status-label">Retainer activo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip reveal">
+    <div class="cta-strip-text">
+      <span class="cta-strip-label">¿Tu proyecto aquí?</span>
+      <h3 class="cta-strip-title">Cada proyecto comienza con<br />un diagnóstico honesto.</h3>
+    </div>
+    <a href="/services/#diagnostico" class="btn-dark">Solicitar diagnóstico →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand">PEAR-ROI Studio ®</span>
+    <ul class="footer-links">
+      <li><a href="/studio/">Estudio</a></li>
+      <li><a href="/projects/">Proyectos</a></li>
+      <li><a href="/services/">Servicios</a></li>
+      <li><a href="https://prms.systems" target="_blank">PRMS Lab</a></li>
+      <li><a href="/">PEAR-ROI Energy</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 PEAR-ROI Studio · Querétaro, México</span>
+  </footer>
+
+  <script>
+    // Filter
+    function filterProjects(type, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.project-card').forEach(card => {
+        const show = type === 'all' || card.dataset.type === type;
+        card.style.display = show ? 'block' : 'none';
+      });
+    }
+
+    // Reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 90);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
