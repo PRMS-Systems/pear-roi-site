@@ -339,3 +339,11 @@ footer { background: var(--black); color: var(--white); padding: clamp(3rem, 6vw
     display: none; /* opcional: ocultar idioma y CTA en mobile */
   }
 }
+
+.hero-highlight {
+  display: block;          /* fuerza salto de línea limpio */
+  margin-top: 12px;        /* separación */
+  font-weight: 600;        /* negrita elegante (no 700) */
+  color: #111827;          /* un poco más oscuro para jerarquía */
+}
+
