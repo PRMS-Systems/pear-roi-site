@@ -69,49 +69,58 @@
   <div class="divider"></div>
 
   <!-- FORMULARIO (RECONTEXTUALIZADO) -->
-  <section class="section">
-    <div class="container" style="max-width:720px;">
+<form action="https://formsubmit.co/PEAR.atencion@gmail.com" method="POST">
 
-      <p class="section-label center">Optimización</p>
+  <!-- Configuración -->
+  <input type="hidden" name="_subject" value="Nueva solicitud PEAR-ROI">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <div class="form-row">
+    <div class="form-group">
+      <input 
+        type="text"
+        name="Nombre"
+        placeholder="Nombre"
+        required
+      >
+    </div>
+    <div class="form-group">
+      <input 
+        type="email"
+        name="Correo"
+        placeholder="Correo electrónico"
+        required
+      >
+    </div>
+  </div>
+  <div class="form-group">
+    <select name="Tipo de usuario" required>
 
-      <h2 class="display center" style="margin-bottom:1rem;">
-        Evoluciona tu sistema
-      </h2>
+      <option value="" disabled selected>
+        Tipo de usuario
+      </option>
+      <option>Propietario</option>
+      <option>Desarrollador</option>
+      <option>Distribuidor</option>
+      <option>Instalador</option>
 
-      <p class="lead center" style="margin-bottom:2.5rem;">
-        Comparte cómo se comporta tu vivienda y definimos el siguiente nivel de desempeño.
-      </p>
+    </select>
+  </div>
+  <div class="form-group">
+    <textarea
+      name="Mensaje"
+      placeholder="¿Qué quieres mejorar en tu sistema?"
+    ></textarea>
+  </div>
+  <button 
+    type="submit"
+    class="btn-primary"
+    style="width:100%;"
+  >
+    Evolucionar mi sistema
+  </button>
 
-      <form onsubmit="handleSubmit(event)">
-        
-        <div class="form-row">
-          <div class="form-group">
-            <input type="text" placeholder="Nombre" required>
-          </div>
-          <div class="form-group">
-            <input type="email" placeholder="Correo electrónico" required>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <select required>
-            <option value="" disabled selected>Tipo de usuario</option>
-            <option>Propietario</option>
-            <option>Desarrollador</option>
-            <option>Distribuidor</option>
-            <option>Instalador</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <textarea placeholder="¿Qué quieres mejorar en tu sistema?"></textarea>
-        </div>
-
-        <button type="submit" class="btn-primary" style="width:100%;">
-          Evolucionar mi sistema
-        </button>
-
-      </form>
+</form>
 
       <div id="form-thanks" style="display:none; text-align:center; padding:3rem; background:var(--off-white); border-radius:var(--radius); margin-top:1rem;">
         <h3>Solicitud recibida</h3>
