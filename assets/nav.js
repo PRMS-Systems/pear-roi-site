@@ -42,7 +42,7 @@
     'home.studio.h2': { es: 'El espacio construido bajo PRMS.', en: 'Built space under PRMS.' },
     'home.studio.p1': { es: 'PEAR-ROI Studio es el estudio de arquitectura que diseña el entorno habitable del futuro. Arquitectura, obra, sistemas e ingeniería de confort — integrados bajo el framework PRMS (Performance-Responsive Metabolic System).', en: 'PEAR-ROI Studio is the architecture studio that designs the livable environment of the future. Architecture, construction, systems, and comfort engineering — integrated under the PRMS framework.' },
     'home.studio.p2': { es: 'El estudio no fabrica sensores. Diseña los espacios donde los sensores tienen sentido.', en: 'The studio doesn\'t manufacture sensors. It designs the spaces where sensors make sense.' },
-    'home.studio.link': { es: 'Conocer PRMS Framework →', en: 'Explore PRMS Framework →' },
+    'home.studio.link': { es: 'Conocer PEAR-ROI Studio →', en: 'Explore PEAR-ROI Studio →' },
     'home.studio.t1': { es: 'Arquitectura', en: 'Architecture' },
     'home.studio.t2': { es: 'Obra & Sistemas', en: 'Construction & Systems' },
     'home.studio.t3': { es: 'Diseño Industrial', en: 'Industrial Design' },
