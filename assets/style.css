@@ -199,7 +199,7 @@ h2.display.center { text-align: center; }
 .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px #4ade80; }
 
 /* ── FOOTER ── */
-footer { background: var(--black); color: var(--white); padding: clamp(3rem, 6vw, 5rem) var(--pad) 2rem; }
+.site-footer { background: var(--black); color: var(--white); padding: clamp(3rem, 6vw, 5rem) var(--pad) 2rem; }
 .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
 .footer-brand img { height: 32px; margin-bottom: 1rem; filter: brightness(10); }
 .footer-brand p { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 28ch; }
