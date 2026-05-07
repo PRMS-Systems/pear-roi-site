@@ -212,7 +212,7 @@
       <div class="nav-container">
         <div class="nav-logo">
           <img src="favicon.png" alt="PEAR-ROI" onerror="this.style.display='none'">
-          <span class="nav-logo-text">PEAR-ROI</span>
+          <span class="nav-logo-text">PEAR-ROI Systems</span>
         </div>
 
         <!-- BOTÓN MOBILE -->
