@@ -129,3 +129,31 @@ footer.ecosystem-footer .ecosystem-copy{
         gap:1rem !important;
     }
 }
+
+/* FORCE ECOSYSTEM MENU HORIZONTAL */
+
+footer.ecosystem-footer ul.ecosystem-links{
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:2.5rem !important;
+    list-style:none !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+footer.ecosystem-footer ul.ecosystem-links li{
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    list-style:none !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+footer.ecosystem-footer ul.ecosystem-links li::marker{
+    content:'' !important;
+}
+footer.ecosystem-footer ul.ecosystem-links a{
+    display:inline-block !important;
+}
