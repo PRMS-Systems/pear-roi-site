@@ -91,8 +91,12 @@
     list-style:none !important;
     margin:0 !important;
     padding:0 !important;
+    width:auto !important;
 }
 .ecosystem-links li{
+    display:inline-flex !important;
+    flex-direction:row !important;
+    align-items:center;
     list-style:none !important;
     margin:0 !important;
     padding:0 !important;
