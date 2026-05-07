@@ -135,3 +135,35 @@
         gap:1.2rem !important;
     }
 }
+
+/* =========================================
+   FORCE RESET
+========================================= */
+
+.ecosystem-footer .ecosystem-links{
+    all:unset;
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:2.5rem !important;
+}
+.ecosystem-footer .ecosystem-links li{
+    all:unset;
+    display:inline-flex !important;
+    align-items:center !important;
+}
+.ecosystem-footer .ecosystem-links a{
+    all:unset;
+    cursor:pointer;
+    color:rgba(255,255,255,.38);
+    text-decoration:none;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    transition:all .25s ease;
+}
+.ecosystem-footer .ecosystem-links a:hover{
+    color:rgba(255,255,255,.9);
+}
