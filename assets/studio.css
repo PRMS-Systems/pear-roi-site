@@ -65,43 +65,42 @@
    ECOSYSTEM FOOTER
 ========================================= */
 
-.ecosystem-footer{
+footer.ecosystem-footer{
     width:100%;
     border-top:1px solid rgba(255,255,255,.08);
     margin-top:3rem;
-    padding:2rem 0 0;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:2rem;
-    flex-wrap:wrap;
+    padding:2rem 3rem;
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:2rem !important;
+    flex-wrap:nowrap !important;
+    background:#080807;
 }
-.ecosystem-brand{
+footer.ecosystem-footer .ecosystem-brand{
     color:rgba(255,255,255,.88);
     font-size:0.95rem;
     letter-spacing:0.04em;
     white-space:nowrap;
 }
-.ecosystem-links{
+footer.ecosystem-footer .ecosystem-links{
     display:flex !important;
     flex-direction:row !important;
-    align-items:center;
-    justify-content:center;
-    gap:2.5rem;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:2.5rem !important;
     list-style:none !important;
     margin:0 !important;
     padding:0 !important;
-    width:auto !important;
 }
-.ecosystem-links li{
+footer.ecosystem-footer .ecosystem-links li{
     display:inline-flex !important;
-    flex-direction:row !important;
-    align-items:center;
     list-style:none !important;
     margin:0 !important;
     padding:0 !important;
 }
-.ecosystem-links a{
+footer.ecosystem-footer .ecosystem-links a{
     color:rgba(255,255,255,.38);
     text-decoration:none;
     font-size:0.72rem;
@@ -109,10 +108,10 @@
     text-transform:uppercase;
     transition:all .25s ease;
 }
-.ecosystem-links a:hover{
+footer.ecosystem-footer .ecosystem-links a:hover{
     color:rgba(255,255,255,.9);
 }
-.ecosystem-copy{
+footer.ecosystem-footer .ecosystem-copy{
     color:rgba(255,255,255,.35);
     font-size:0.72rem;
     letter-spacing:0.08em;
@@ -120,11 +119,13 @@
 }
 /* RESPONSIVE */
 @media (max-width:900px){
-    .ecosystem-footer{
-        flex-direction:column;
-        align-items:flex-start;
+    footer.ecosystem-footer{
+        flex-direction:column !important;
+        align-items:flex-start !important;
+        gap:1.5rem !important;
     }
-    .ecosystem-links{
-        gap:1.2rem;
+    footer.ecosystem-footer .ecosystem-links{
+        flex-wrap:wrap !important;
+        gap:1rem !important;
     }
 }
