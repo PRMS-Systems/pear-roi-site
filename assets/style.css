@@ -22,7 +22,7 @@
   --radius-sm: 12px;
   --max: 1120px;
   --pad: clamp(1.5rem, 5vw, 4rem);
-  --nav-h: 52px;
+  --nav-h: 72px;
 }
 
 /* ── RESET ── */
@@ -35,13 +35,15 @@ a { text-decoration: none; color: inherit; }
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  height: var(--nav-h);
+  min-height: var(--nav-h);
+  padding-top: 10px;
+  padding-bottom: 10px;
   background: rgba(255,255,255,0.82);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid rgba(0,0,0,0.06);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 var(--pad);
+  padding: 0.75rem var(--pad);
 }
 .nav-logo { display: flex; align-items: center; gap: 10px; }
 .nav-logo img { height: 28px; width: auto; }
