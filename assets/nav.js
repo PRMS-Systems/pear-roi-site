@@ -55,7 +55,7 @@
     'prod.eyebrow':   { es: 'Sensores & Kits', en: 'Sensors & Kits' },
     'prod.h1a':       { es: 'Tecnología que',  en: 'Technology that' },
     'prod.h1b':       { es: 'trabaja por ti.', en: 'works for you.' },
-    'prod.sub':       { es: 'Cinco kits modulares basados en ESP32, controlados por nuestra app propietaria. Hardware y software de casa — 60% más económico que las marcas tradicionales.', en: 'Five modular kits based on ESP32, controlled by our proprietary app. In-house hardware and software — 60% more affordable than traditional brands.' },
+    'prod.sub':       { es: 'Cinco sistemas modulares integrados en un solo ecosistema operativo. <br> Agua, energía, clima, seguridad y confort trabajando en sincronía.', en: 'Five modular systems integrated into a single operating ecosystem.<br>Water, energy, climate, security, and comfort working in synchrony.' },
     'prod.all':       { es: 'Todos los kits', en: 'All kits' },
     'prod.roi.label': { es: 'Impacto Financiero', en: 'Financial Impact' },
     'prod.comp.label':{ es: 'Componentes', en: 'Components' },
