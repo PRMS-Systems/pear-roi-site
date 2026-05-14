@@ -514,3 +514,38 @@ footer { background: var(--black); color: var(--white); padding: clamp(3rem, 6vw
   opacity: 1;
   transform: translateY(0) scale(1);
 }
+
+/* ========================= */
+/* PRODUCT HERO IMAGE        */
+/* ========================= */
+
+.product-hero-image {
+
+  display: flex;
+  justify-content: center;
+
+  margin: 5rem 0 4rem;
+}
+
+.product-hero-image img {
+
+  width: 100%;
+  max-width: 1200px;
+
+  border-radius: 36px;
+
+  box-shadow:
+    0 40px 120px rgba(0,0,0,0.12);
+
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.product-hero-image img:hover {
+
+  transform: scale(1.01);
+
+  box-shadow:
+    0 60px 160px rgba(0,0,0,0.16);
+}
