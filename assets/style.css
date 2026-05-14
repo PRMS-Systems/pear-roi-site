@@ -481,8 +481,11 @@ footer { background: var(--black); color: var(--white); padding: clamp(3rem, 6vw
 
 .interface-section {
   background: #050816;
+  padding: 8rem 0 10rem;
 }
-
+.interface-section h2 {
+  color: white;
+}
 .interface-copy {
   max-width: 760px;
   margin: 0 auto 3rem;
