@@ -52,7 +52,7 @@
     'home.cta.btn':   { es: 'Contactar ahora', en: 'Contact now' },
 
     // PRODUCT PAGE
-    'prod.eyebrow':   { es: 'Sensores & Kits', en: 'Sensors & Kits' },
+    'prod.eyebrow':   { es: 'Sistemas', en: 'Systems' },
     'prod.h1a':       { es: 'Tecnología que',  en: 'Technology that' },
     'prod.h1b':       { es: 'trabaja por ti.', en: 'works for you.' },
     'prod.sub':       { es: 'Cinco sistemas modulares integrados en un solo ecosistema operativo. <br> Agua, energía, clima, seguridad y confort trabajando en sincronía.', en: 'Five modular systems integrated into a single operating ecosystem.<br>Water, energy, climate, security, and comfort working in synchrony.' },
